@@ -10,11 +10,23 @@
     rel="stylesheet"
   >
   <link rel="stylesheet" href="assets/site.css">
+
+  <style>
+    /* Fade animation for thank-you message */
+    #thankYou {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    #thankYou.show {
+      opacity: 1;
+    }
+  </style>
 </head>
+
 <body class="d-flex h-100 text-center text-white bg-dark">
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-    <!-- Top navigation -->
+    <!-- Navigation -->
     <header class="mb-auto text-center">
       <div>
         <h3 class="mb-3">Antimicrobial Drug Discovery Lab</h3>
@@ -94,7 +106,8 @@
           <h3 class="mb-3">Or send us a message directly</h3>
         </div>
 
-        <form action="https://formspree.io/f/your-form-id" method="POST" class="bg-body-tertiary p-4 rounded-4 shadow-sm mx-auto" style="max-width: 700px;">
+        <form id="joinForm" action="https://formspree.io/f/mqayvbeg" method="POST"
+              class="bg-body-tertiary p-4 rounded-4 shadow-sm mx-auto" style="max-width: 700px;">
           <div class="mb-3">
             <label for="name" class="form-label fw-semibold">Name</label>
             <input type="text" name="name" id="name" class="form-control" required>
@@ -115,6 +128,11 @@
               Send Message
             </button>
           </div>
+
+          <!-- Thank You Message -->
+          <div id="thankYou" class="alert alert-success mt-4 text-center d-none" role="alert">
+            Thank you for your interest!
+          </div>
         </form>
       </div>
     </main>
@@ -128,6 +146,37 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Show fading thank-you message on successful submission
+    const form = document.getElementById('joinForm');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        thankYou.classList.remove('d-none');
+        thankYou.classList.add('show');
+        // Hide again after 5 seconds
+        setTimeout(() => {
+          thankYou.classList.remove('show');
+          setTimeout(() => thankYou.classList.add('d-none'), 800);
+        }, 5000);
+      } else {
+        thankYou.classList.remove('alert-success');
+        thankYou.classList.add('alert-danger');
+        thankYou.textContent = 'Oops! Something went wrong. Please try again later.';
+        thankYou.classList.remove('d-none');
+        thankYou.classList.add('show');
+      }
+    });
   </script>
 </body>
 </html>
