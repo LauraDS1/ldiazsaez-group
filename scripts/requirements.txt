@@ -1,2 +1,3 @@
 scholarly==1.7.11
 requests>=2.31
+Unidecode>=1.3
