@@ -1,58 +1,114 @@
-<main class="px-3 my-auto">
-  <h1 class="display-4 mb-4">Publications</h1>
-  <div id="pub-list" class="text-start mx-auto" style="max-width: 900px;">
-    <p class="text-white-50">Loading…</p>
+<main class="px-3 my-auto text-start">
+  <div class="container my-5" style="max-width: 900px;">
+    <h1 class="display-4 text-center mb-2">Publications</h1>
+    <p class="lead text-center text-white-50 mb-4">Recent scientific contributions from our group.</p>
+
+    <!-- Year index (auto-filled) -->
+    <div id="year-index" class="d-flex flex-wrap gap-2 justify-content-center mb-4"></div>
+
+    <div id="pub-list">
+      <p class="text-center text-white-50">Loading…</p>
+    </div>
   </div>
 </main>
 
+<style>
+  /* Subtle section styling for year headers and list spacing */
+  #pub-list h3 {
+    margin-top: 2rem;
+    margin-bottom: .75rem;
+    border-left: 4px solid #6c757d;
+    padding-left: 10px;
+    color: #e0e0e0;
+  }
+  #pub-list ul {
+    padding-left: 1rem; /* neat bullet alignment */
+    margin-bottom: 0;
+  }
+  #pub-list li {
+    margin-bottom: .85rem;
+    line-height: 1.5;
+  }
+  .pub-meta {
+    font-style: italic;
+  }
+  .pub-actions a {
+    text-decoration: underline;
+  }
+</style>
+
 <script>
-async function loadPublications() {
-  const el = document.getElementById('pub-list');
+(async function loadPublications() {
+  const listEl = document.getElementById('pub-list');
+  const indexEl = document.getElementById('year-index');
+
   try {
     const res = await fetch('assets/publications.json', { cache: 'no-store' });
     if (!res.ok) throw new Error('Failed to load publications.json');
     const pubs = await res.json();
 
-    // Group by year (desc)
+    if (!Array.isArray(pubs) || pubs.length === 0) {
+      listEl.innerHTML = `<div class="alert alert-warning">No publications to display yet.</div>`;
+      indexEl.innerHTML = '';
+      return;
+    }
+
+    // Group by year
     const byYear = pubs.reduce((acc, p) => {
-      const y = p.year || 'In press';
-      acc[y] = acc[y] || [];
-      acc[y].push(p);
+      const y = (p.year && String(p.year).trim()) || 'In press';
+      (acc[y] ||= []).push(p);
       return acc;
     }, {});
+
+    // Sort years: "In press" first, then numeric years desc, then anything else
     const years = Object.keys(byYear).sort((a, b) => {
-      const ai = parseInt(a) || 0, bi = parseInt(b) || 0;
-      return bi - ai;
+      const isAInPress = a.toLowerCase() === 'in press';
+      const isBInPress = b.toLowerCase() === 'in press';
+      if (isAInPress && !isBInPress) return -1;
+      if (!isAInPress && isBInPress) return 1;
+      const ai = parseInt(a) || -Infinity;
+      const bi = parseInt(b) || -Infinity;
+      return bi - ai; // numeric desc; NaN -> -Infinity goes to end
     });
 
-    el.innerHTML = years.map(year => {
+    // Build year index (anchor pills)
+    indexEl.innerHTML = years.map(y =>
+      `<a class="btn btn-sm btn-outline-light" href="#year-${CSS.escape(y)}">${y}</a>`
+    ).join('');
+
+    // Render lists
+    listEl.innerHTML = years.map(year => {
+      // Sort within year: keep order as in JSON (already sorted by the script), or sort by title
       const items = byYear[year].map(p => {
+        const title = p.title || 'Untitled';
         const authors = p.authors ? `<span class="text-white-50">${p.authors}</span>` : '';
-        const venue = p.venue ? `<em>${p.venue}</em>` : '';
+        const venue = p.venue ? `<span class="pub-meta">${p.venue}</span>` : '';
         const yearTxt = p.year ? ` (${p.year})` : '';
         const link = p.url || p.eprint_url;
-        const linkHtml = link ? `<a href="${link}" target="_blank" rel="noopener">View</a>` : '';
-        const cites = (p.cited_by && Number(p.cited_by) > 0) ? `<span class="ms-2 text-white-50">Cited by ${p.cited_by}</span>` : '';
+        const linkHtml = link ? `<span class="pub-actions ms-1"><a href="${link}" target="_blank" rel="noopener">View</a></span>` : '';
+        const cites = (p.cited_by && Number(p.cited_by) > 0)
+          ? `<span class="ms-2 text-white-50">Cited by ${p.cited_by}</span>` : '';
+
         return `
-          <li class="mb-3">
-            <strong>${p.title}</strong><br>
-            ${authors}<br>
+          <li>
+            <strong>${title}</strong><br>
+            ${authors ? `${authors}<br>` : ''}
             ${venue}${yearTxt} ${linkHtml} ${cites}
           </li>
         `;
       }).join('');
 
       return `
-        <h3 class="mt-4">${year}</h3>
-        <ul class="mt-2">
+        <h3 id="year-${year}">${year}</h3>
+        <ul>
           ${items}
         </ul>
       `;
     }).join('');
   } catch (e) {
     console.error(e);
-    el.innerHTML = `<div class="alert alert-warning">Couldn’t load publications right now.</div>`;
+    listEl.innerHTML = `<div class="alert alert-warning">Couldn’t load publications right now.</div>`;
+    indexEl.innerHTML = '';
   }
-}
-loadPublications();
+})();
 </script>
