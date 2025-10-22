@@ -1,76 +1,160 @@
-name: Update publications JSON
+# scripts/fetch_scholar.py
+"""
+Fetch publications and write to assets/publications.json.
 
-on:
-  schedule:
-    # 1st of every month at 05:00 UTC (change if you like)
-    - cron: "0 5 1 * *"
-  workflow_dispatch: {}
+Priority:
+1) Google Scholar via `scholarly` (best match but may fail in CI).
+2) Semantic Scholar via fixed Author ID (S2_AUTHOR_ID) -> STRICT filter by that ID.
 
-permissions:
-  contents: write
+Output keys: title, authors, year, venue, url, eprint_url, cited_by, source
+"""
 
-concurrency:
-  group: publications-json
-  cancel-in-progress: true
+from __future__ import annotations
+import json, time, pathlib, sys, os
+from typing import List, Dict
 
-jobs:
-  update-pubs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0             # IMPORTANT: allows rebase
-          persist-credentials: true  # keep token for push
+OUT_PATH = pathlib.Path("assets/publications.json")
+OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-      - name: Configure Git (safe dir + identity)
-        run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          # helpful default
-          git config pull.rebase true
+SCHOLAR_ID = "9ZrRyxUAAAAJ"                 # your Google Scholar ID
+S2_AUTHOR_ID = os.getenv("S2_AUTHOR_ID", "") # set this as a repo secret
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+def safe_year(y):
+    try: return int(y)
+    except: return 0
 
-      - name: Install deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r scripts/requirements.txt
+def normalize(items: List[Dict]) -> List[Dict]:
+    # sort newest first, then title
+    items.sort(key=lambda x: (safe_year(x.get("year") or 0), (x.get("title") or "").lower()), reverse=True)
+    return items
 
-      - name: Fetch publications (writes assets/publications.json)
-        run: |
-          python scripts/fetch_scholar.py
+def write_output(items: List[Dict]):
+    items = normalize(items or [])
+    with OUT_PATH.open("w", encoding="utf-8") as f:
+        json.dump(items, f, indent=2, ensure_ascii=False)
+    print(f"✅ Wrote {len(items)} items -> {OUT_PATH}")
 
-      - name: Commit & push (rebase if needed, retry)
-        env:
-          BRANCH: ${{ github.event.repository.default_branch }}  # usually 'main'
-        run: |
-          set -e
+# ------------ Google Scholar (best when it works locally) ---------------
+def fetch_from_scholar() -> List[Dict]:
+    print("→ Trying Google Scholar via 'scholarly'…")
+    try:
+        from scholarly import scholarly
+    except Exception as e:
+        print(f"  ! scholarly not available: {e}", file=sys.stderr)
+        return []
 
-          # Only proceed if there are changes
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes."
-            exit 0
-          fi
+    try:
+        author = scholarly.search_author_id(SCHOLAR_ID)
+        author = scholarly.fill(author, sections=["publications"])
+    except Exception as e:
+        print(f"  ! Could not fetch author from Scholar: {e}", file=sys.stderr)
+        return []
 
-          git add assets/publications.json
-          git commit -m "chore: update publications.json [skip ci]"
+    pubs = author.get("publications") or []
+    print(f"  • Found {len(pubs)} publications on Scholar. Filling…")
+    items: List[Dict] = []
+    for i, pub in enumerate(pubs, start=1):
+        try:
+            pub_filled = scholarly.fill(pub)
+            bib = pub_filled.get("bib") or {}
+            items.append({
+                "title": bib.get("title", "") or "",
+                "authors": bib.get("author", "") or "",
+                "year": bib.get("pub_year", "") or "",
+                "venue": bib.get("venue", "") or "",
+                "url": (pub_filled.get("pub_url") or pub_filled.get("eprint_url") or "") or "",
+                "eprint_url": pub_filled.get("eprint_url", "") or "",
+                "cited_by": int(pub_filled.get("num_citations") or 0),
+                "source": "google_scholar",
+            })
+            print(f"    ✓ {i}: {bib.get('title','')[:70]}")
+            time.sleep(1.0)  # be polite
+        except Exception as e:
+            print(f"    ! Failed on pub {i}: {e}", file=sys.stderr)
+    return items
 
-          # Try push; if rejected, rebase on latest remote and retry up to 3 times
-          for attempt in 1 2 3; do
-            if git push origin HEAD:${BRANCH}; then
-              echo "Push succeeded."
-              exit 0
-            fi
-            echo "Push rejected (attempt $attempt). Rebasing onto origin/${BRANCH}…"
-            git fetch origin
-            git pull --rebase origin ${BRANCH} || true
-            sleep 2
-          done
+# --------------- Semantic Scholar (robust in CI) ------------------------
+def fetch_from_semantic_scholar(author_id: str) -> List[Dict]:
+    print(f"→ Fetching from Semantic Scholar with authorId={author_id} …")
+    try:
+        import requests
+    except Exception as e:
+        print(f"  ! requests not available: {e}", file=sys.stderr)
+        return []
 
-          echo "Failed to push after 3 attempts."
-          exit 1
+    url = f"https://api.semanticscholar.org/graph/v1/author/{author_id}/papers"
+    fields = "title,venue,year,url,openAccessPdf,citationCount,authors"
+
+    try:
+        r = requests.get(url, params={"limit": 200, "fields": fields, "offset": 0, "sort": "year:desc"}, timeout=60)
+        r.raise_for_status()
+        payload = r.json()
+    except Exception as e:
+        print(f"  ! Semantic Scholar API error: {e}", file=sys.stderr)
+        return []
+
+    papers = payload.get("data") or []
+    items: List[Dict] = []
+
+    for i, p in enumerate(papers, start=1):
+        # STRICT: keep only papers where our authorId is in the author list
+        authors = p.get("authors") or []
+        author_ids = {a.get("authorId") for a in authors if a.get("authorId")}
+        if author_id not in author_ids:
+            continue
+
+        title = p.get("title") or ""
+        venue = p.get("venue") or ""
+        year = p.get("year") or ""
+        url_pref = (p.get("openAccessPdf") or {}).get("url") or (p.get("url") or "")
+        author_names = ", ".join([a.get("name", "") for a in authors if a.get("name")])
+        cited_by = int(p.get("citationCount") or 0)
+
+        items.append({
+            "title": title,
+            "authors": author_names,
+            "year": year,
+            "venue": venue,
+            "url": url_pref,
+            "eprint_url": (p.get("openAccessPdf") or {}).get("url") or "",
+            "cited_by": cited_by,
+            "source": "semantic_scholar",
+        })
+
+        if i % 25 == 0:
+            print(f"    • processed {i} papers…")
+
+    print(f"  • Kept {len(items)} papers after strict authorId filter.")
+    return items
+
+# ------------------------------- main ----------------------------------
+def main():
+    items: List[Dict] = []
+
+    # Try Scholar (works locally; may fail on CI)
+    try:
+        items = fetch_from_scholar()
+    except Exception as e:
+        print(f"! Unexpected Scholar error: {e}", file=sys.stderr)
+
+    # If no items or running in CI, prefer S2 by ID (reliable + strict)
+    if S2_AUTHOR_ID:
+        try:
+            s2_items = fetch_from_semantic_scholar(S2_AUTHOR_ID)
+            if s2_items:
+                items = s2_items
+        except Exception as e:
+            print(f"! Unexpected Semantic Scholar error: {e}", file=sys.stderr)
+
+    # Always write something (even empty list)
+    write_output(items)
+
+if __name__ == "__main__":
+    try:
+        main()
+        sys.exit(0)
+    except Exception as e:
+        print(f"!! Fatal: {e}", file=sys.stderr)
+        try: write_output([])
+        except: pass
+        sys.exit(0)
