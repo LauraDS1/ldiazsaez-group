@@ -3,7 +3,7 @@ name: Update publications JSON
 on:
   schedule:
     # Runs daily at 05:00 UTC (Cron times are in UTC)
-    - cron: "0 5 * * *"
+    - cron: "0 5 1 * *"
   workflow_dispatch: {}
 
 permissions:
