@@ -1,32 +1,52 @@
 # scripts/fetch_scholar.py
 """
-Fetch publications and write to assets/publications.json.
+Generates assets/publications.json for the lab website.
 
 Priority:
-1) Google Scholar via `scholarly` (best match but may fail in CI).
-2) Semantic Scholar via fixed Author ID (S2_AUTHOR_ID) -> STRICT filter by that ID.
+1) Semantic Scholar (strict by Author ID)
+2) Crossref (by ORCID) as a fallback
 
-Output keys: title, authors, year, venue, url, eprint_url, cited_by, source
+Outputs a list of dicts:
+  title, authors, year, venue, url, eprint_url, cited_by, source
 """
 
 from __future__ import annotations
-import json, time, pathlib, sys, os
+import json, pathlib, sys, os, time
 from typing import List, Dict
+
+try:
+    import requests
+except Exception:
+    print("requests is required. Add it to scripts/requirements.txt", file=sys.stderr)
+    sys.exit(0)
 
 OUT_PATH = pathlib.Path("assets/publications.json")
 OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-SCHOLAR_ID = "9ZrRyxUAAAAJ"                 # your Google Scholar ID
-S2_AUTHOR_ID = os.getenv("S2_AUTHOR_ID", "") # set this as a repo secret
+# ---- Configuration ----
+# Set ONE (or both) of these. Prefer S2_AUTHOR_ID for best results.
+S2_AUTHOR_ID = os.getenv("S2_AUTHOR_ID", "").strip()   # e.g. "2092948527"
+ORCID_ID     = os.getenv("ORCID_ID", "").strip()       # e.g. "0000-0002-1825-0097"
+
+UA = {"User-Agent": "lda-lab-pubs/1.0 (GitHub Actions; contact: maintainer)"}
 
 def safe_year(y):
-    try: return int(y)
-    except: return 0
+    try: return int(str(y).strip())
+    except Exception: return 0
 
 def normalize(items: List[Dict]) -> List[Dict]:
-    # sort newest first, then title
-    items.sort(key=lambda x: (safe_year(x.get("year") or 0), (x.get("title") or "").lower()), reverse=True)
-    return items
+    # Remove trivial duplicates by (title, year)
+    seen = set()
+    deduped = []
+    for it in items:
+        key = (it.get("title","").strip().lower(), str(it.get("year","")))
+        if key in seen: 
+            continue
+        seen.add(key)
+        deduped.append(it)
+    # Sort newest first, then title
+    deduped.sort(key=lambda x: (safe_year(x.get("year")), (x.get("title") or "").lower()), reverse=True)
+    return deduped
 
 def write_output(items: List[Dict]):
     items = normalize(items or [])
@@ -34,119 +54,152 @@ def write_output(items: List[Dict]):
         json.dump(items, f, indent=2, ensure_ascii=False)
     print(f"✅ Wrote {len(items)} items -> {OUT_PATH}")
 
-# ------------ Google Scholar (best when it works locally) ---------------
-def fetch_from_scholar() -> List[Dict]:
-    print("→ Trying Google Scholar via 'scholarly'…")
-    try:
-        from scholarly import scholarly
-    except Exception as e:
-        print(f"  ! scholarly not available: {e}", file=sys.stderr)
-        return []
-
-    try:
-        author = scholarly.search_author_id(SCHOLAR_ID)
-        author = scholarly.fill(author, sections=["publications"])
-    except Exception as e:
-        print(f"  ! Could not fetch author from Scholar: {e}", file=sys.stderr)
-        return []
-
-    pubs = author.get("publications") or []
-    print(f"  • Found {len(pubs)} publications on Scholar. Filling…")
+# ----------------------------- Semantic Scholar -----------------------------
+def fetch_semantic_scholar(author_id: str) -> List[Dict]:
+    print(f"→ Semantic Scholar: authorId={author_id}")
     items: List[Dict] = []
-    for i, pub in enumerate(pubs, start=1):
-        try:
-            pub_filled = scholarly.fill(pub)
-            bib = pub_filled.get("bib") or {}
-            items.append({
-                "title": bib.get("title", "") or "",
-                "authors": bib.get("author", "") or "",
-                "year": bib.get("pub_year", "") or "",
-                "venue": bib.get("venue", "") or "",
-                "url": (pub_filled.get("pub_url") or pub_filled.get("eprint_url") or "") or "",
-                "eprint_url": pub_filled.get("eprint_url", "") or "",
-                "cited_by": int(pub_filled.get("num_citations") or 0),
-                "source": "google_scholar",
-            })
-            print(f"    ✓ {i}: {bib.get('title','')[:70]}")
-            time.sleep(1.0)  # be polite
-        except Exception as e:
-            print(f"    ! Failed on pub {i}: {e}", file=sys.stderr)
-    return items
-
-# --------------- Semantic Scholar (robust in CI) ------------------------
-def fetch_from_semantic_scholar(author_id: str) -> List[Dict]:
-    print(f"→ Fetching from Semantic Scholar with authorId={author_id} …")
-    try:
-        import requests
-    except Exception as e:
-        print(f"  ! requests not available: {e}", file=sys.stderr)
-        return []
-
     url = f"https://api.semanticscholar.org/graph/v1/author/{author_id}/papers"
     fields = "title,venue,year,url,openAccessPdf,citationCount,authors"
+    limit = 200
+    offset = 0
 
-    try:
-        r = requests.get(url, params={"limit": 200, "fields": fields, "offset": 0, "sort": "year:desc"}, timeout=60)
-        r.raise_for_status()
-        payload = r.json()
-    except Exception as e:
-        print(f"  ! Semantic Scholar API error: {e}", file=sys.stderr)
-        return []
+    while True:
+        try:
+            r = requests.get(
+                url,
+                params={"fields": fields, "limit": limit, "offset": offset, "sort": "year:desc"},
+                headers=UA,
+                timeout=60
+            )
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            print(f"  ! S2 page fetch failed at offset={offset}: {e}", file=sys.stderr)
+            break
 
-    papers = payload.get("data") or []
-    items: List[Dict] = []
+        papers = data.get("data") or []
+        if not papers:
+            break
 
-    for i, p in enumerate(papers, start=1):
-        # STRICT: keep only papers where our authorId is in the author list
-        authors = p.get("authors") or []
-        author_ids = {a.get("authorId") for a in authors if a.get("authorId")}
-        if author_id not in author_ids:
-            continue
+        for p in papers:
+            # STRICT: keep only if our authorId is listed in authors
+            authors = p.get("authors") or []
+            if author_id not in {a.get("authorId") for a in authors if a.get("authorId")}:
+                continue
 
-        title = p.get("title") or ""
-        venue = p.get("venue") or ""
-        year = p.get("year") or ""
-        url_pref = (p.get("openAccessPdf") or {}).get("url") or (p.get("url") or "")
-        author_names = ", ".join([a.get("name", "") for a in authors if a.get("name")])
-        cited_by = int(p.get("citationCount") or 0)
+            title = p.get("title") or ""
+            venue = p.get("venue") or ""
+            year = p.get("year") or ""
+            url_pref = (p.get("openAccessPdf") or {}).get("url") or p.get("url") or ""
+            author_names = ", ".join([a.get("name","") for a in authors if a.get("name")])
+            cited_by = int(p.get("citationCount") or 0)
 
-        items.append({
-            "title": title,
-            "authors": author_names,
-            "year": year,
-            "venue": venue,
-            "url": url_pref,
-            "eprint_url": (p.get("openAccessPdf") or {}).get("url") or "",
-            "cited_by": cited_by,
-            "source": "semantic_scholar",
-        })
+            items.append({
+                "title": title,
+                "authors": author_names,
+                "year": year,
+                "venue": venue,
+                "url": url_pref,
+                "eprint_url": (p.get("openAccessPdf") or {}).get("url") or "",
+                "cited_by": cited_by,
+                "source": "semantic_scholar"
+            })
 
-        if i % 25 == 0:
-            print(f"    • processed {i} papers…")
+        offset += limit
+        if len(papers) < limit:
+            break
+        time.sleep(0.5)  # be polite
 
-    print(f"  • Kept {len(items)} papers after strict authorId filter.")
+    print(f"  • S2 kept {len(items)} papers after strict author filter.")
     return items
 
-# ------------------------------- main ----------------------------------
+# --------------------------------- Crossref ---------------------------------
+def fetch_crossref(orcid: str) -> List[Dict]:
+    print(f"→ Crossref: ORCID={orcid}")
+    items: List[Dict] = []
+    # Use cursor-based pagination for reliability
+    url = "https://api.crossref.org/works"
+    cursor = "*"
+    rows = 200
+    seen = 0
+
+    while True:
+        try:
+            r = requests.get(
+                url,
+                params={"filter": f"orcid:{orcid}", "rows": rows, "cursor": cursor, "select":
+                        "title,author,issued,container-title,URL,is-referenced-by-count"},
+                headers=UA,
+                timeout=60
+            )
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            print(f"  ! Crossref fetch failed: {e}", file=sys.stderr)
+            break
+
+        items_page = data.get("message", {}).get("items", []) or []
+        next_cursor = data.get("message", {}).get("next-cursor", "")
+
+        for it in items_page:
+            title = " ".join(it.get("title") or []).strip()
+            cont = " ".join(it.get("container-title") or []).strip()
+            year = ""
+            issued = it.get("issued", {}).get("date-parts", [])
+            if issued and isinstance(issued[0], list) and len(issued[0]) > 0:
+                year = issued[0][0]
+            url_pref = it.get("URL") or ""
+            cited_by = int(it.get("is-referenced-by-count") or 0)
+
+            authors = it.get("author") or []
+            author_names = []
+            for a in authors:
+                name = " ".join([a.get("given",""), a.get("family","")]).strip()
+                if name:
+                    author_names.append(name)
+            author_str = ", ".join(author_names)
+
+            items.append({
+                "title": title or "",
+                "authors": author_str,
+                "year": year,
+                "venue": cont,
+                "url": url_pref,
+                "eprint_url": "",
+                "cited_by": cited_by,
+                "source": "crossref_orcid"
+            })
+            seen += 1
+
+        if not next_cursor or not items_page:
+            break
+        cursor = next_cursor
+        time.sleep(0.4)
+
+    print(f"  • Crossref collected {len(items)} works.")
+    return items
+
+# ---------------------------------- main ------------------------------------
 def main():
     items: List[Dict] = []
 
-    # Try Scholar (works locally; may fail on CI)
-    try:
-        items = fetch_from_scholar()
-    except Exception as e:
-        print(f"! Unexpected Scholar error: {e}", file=sys.stderr)
-
-    # If no items or running in CI, prefer S2 by ID (reliable + strict)
+    # Prefer Semantic Scholar if ID is provided
     if S2_AUTHOR_ID:
         try:
-            s2_items = fetch_from_semantic_scholar(S2_AUTHOR_ID)
+            s2_items = fetch_semantic_scholar(S2_AUTHOR_ID)
             if s2_items:
                 items = s2_items
         except Exception as e:
-            print(f"! Unexpected Semantic Scholar error: {e}", file=sys.stderr)
+            print(f"! S2 error: {e}", file=sys.stderr)
 
-    # Always write something (even empty list)
+    # Fallback to Crossref ORCID if configured or if S2 returned nothing
+    if (not items) and ORCID_ID:
+        try:
+            items = fetch_crossref(ORCID_ID)
+        except Exception as e:
+            print(f"! Crossref error: {e}", file=sys.stderr)
+
+    # Always write something (even empty list) so site doesn't break
     write_output(items)
 
 if __name__ == "__main__":
@@ -155,6 +208,8 @@ if __name__ == "__main__":
         sys.exit(0)
     except Exception as e:
         print(f"!! Fatal: {e}", file=sys.stderr)
-        try: write_output([])
-        except: pass
+        try:
+            write_output([])
+        except Exception:
+            pass
         sys.exit(0)
