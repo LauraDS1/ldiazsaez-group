@@ -2,12 +2,16 @@ name: Update publications JSON
 
 on:
   schedule:
-    # Runs daily at 05:00 UTC (Cron times are in UTC)
+    # 1st of every month at 05:00 UTC (change if you like)
     - cron: "0 5 1 * *"
   workflow_dispatch: {}
 
 permissions:
   contents: write
+
+concurrency:
+  group: publications-json
+  cancel-in-progress: true
 
 jobs:
   update-pubs:
@@ -15,6 +19,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0             # IMPORTANT: allows rebase
+          persist-credentials: true  # keep token for push
+
+      - name: Configure Git (safe dir + identity)
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # helpful default
+          git config pull.rebase true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -26,19 +41,36 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
 
-      # No env/secret needed since the ID is hardcoded in fetch_scholar.py
-      - name: Fetch publications
+      - name: Fetch publications (writes assets/publications.json)
         run: |
           python scripts/fetch_scholar.py
 
-      - name: Commit & push if changed
+      - name: Commit & push (rebase if needed, retry)
+        env:
+          BRANCH: ${{ github.event.repository.default_branch }}  # usually 'main'
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add assets/publications.json
-            git commit -m "chore: update publications.json [skip ci]"
-            git push
-          else
+          set -e
+
+          # Only proceed if there are changes
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No changes."
+            exit 0
           fi
+
+          git add assets/publications.json
+          git commit -m "chore: update publications.json [skip ci]"
+
+          # Try push; if rejected, rebase on latest remote and retry up to 3 times
+          for attempt in 1 2 3; do
+            if git push origin HEAD:${BRANCH}; then
+              echo "Push succeeded."
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt). Rebasing onto origin/${BRANCH}…"
+            git fetch origin
+            git pull --rebase origin ${BRANCH} || true
+            sleep 2
+          done
+
+          echo "Failed to push after 3 attempts."
+          exit 1
