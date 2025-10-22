@@ -19,18 +19,23 @@
 
   <style>
     /* Subtle section styling for year headers and list spacing */
-    #pub-list h3 {
+    .pub-section h2 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .year-pills a { margin: 0.2rem; }
+    .year-title {
       margin-top: 2rem;
       margin-bottom: .75rem;
       border-left: 4px solid #6c757d;
       padding-left: 10px;
       color: #e0e0e0;
     }
-    #pub-list ul {
+    .pub-list ul {
       padding-left: 1rem; /* neat bullet alignment */
       margin-bottom: 0;
     }
-    #pub-list li {
+    .pub-list li {
       margin-bottom: .85rem;
       line-height: 1.5;
     }
@@ -60,15 +65,35 @@
     <!-- Main content -->
     <main class="px-3 my-auto text-start">
       <div class="container my-5" style="max-width: 900px;">
-        <h1 class="display-4 text-center mb-2">Publications</h1>
-        <p class="lead text-center text-white-50 mb-4">Recent scientific contributions from our group.</p>
 
-        <!-- Year index (auto-filled) -->
-        <div id="year-index" class="d-flex flex-wrap gap-2 justify-content-center mb-4"></div>
+        <!-- Section 1: Recent (>= 2025 + In press) -->
+        <section class="pub-section mb-5">
+          <h1 class="display-5 text-center mb-2">Recent scientific contributions from our group</h1>
+          <p class="lead text-center text-white-50 mb-4">Publications from 2025 onward (including “In press”).</p>
 
-        <div id="pub-list">
-          <p class="text-center text-white-50">Loading…</p>
-        </div>
+          <!-- Year index (auto-filled) -->
+          <div id="recent-index" class="year-pills d-flex flex-wrap justify-content-center mb-3"></div>
+
+          <div id="recent-list" class="pub-list">
+            <p class="text-center text-white-50">Loading…</p>
+          </div>
+        </section>
+
+        <hr class="my-5">
+
+        <!-- Section 2: Older (< 2025) -->
+        <section class="pub-section">
+          <h2 class="text-center mb-2">Other scientific contributions by Laura Díaz Sáez</h2>
+          <p class="lead text-center text-white-50 mb-4">Publications prior to 2025.</p>
+
+          <!-- Year index (auto-filled) -->
+          <div id="other-index" class="year-pills d-flex flex-wrap justify-content-center mb-3"></div>
+
+          <div id="other-list" class="pub-list">
+            <p class="text-center text-white-50">Loading…</p>
+          </div>
+        </section>
+
       </div>
     </main>
 
@@ -89,47 +114,46 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    (async function loadPublications() {
-      const listEl = document.getElementById('pub-list');
-      const indexEl = document.getElementById('year-index');
+    (async function () {
+      const RECENT_YEAR = 2025;
 
-      try {
-        const res = await fetch('assets/publications.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('Failed to load publications.json');
-        const pubs = await res.json();
+      const elRecentList  = document.getElementById('recent-list');
+      const elRecentIndex = document.getElementById('recent-index');
+      const elOtherList   = document.getElementById('other-list');
+      const elOtherIndex  = document.getElementById('other-index');
 
-        if (!Array.isArray(pubs) || pubs.length === 0) {
-          listEl.innerHTML = `<div class="alert alert-warning">No publications to display yet.</div>`;
-          indexEl.innerHTML = '';
-          return;
-        }
+      function showError(targetList, targetIndex, msg) {
+        targetList.innerHTML = `<div class="alert alert-warning">${msg}</div>`;
+        targetIndex.innerHTML = '';
+      }
 
-        // Group by year
-        const byYear = pubs.reduce((acc, p) => {
-          const y = (p.year && String(p.year).trim()) || 'In press';
-          (acc[y] ||= []).push(p);
-          return acc;
-        }, {});
+      function toYear(v) {
+        if (!v) return NaN;
+        const n = parseInt(v, 10);
+        return Number.isFinite(n) ? n : NaN;
+      }
 
-        // Sort years: "In press" first, then numeric years desc, then anything else
-        const years = Object.keys(byYear).sort((a, b) => {
-          const isAInPress = a.toLowerCase() === 'in press';
-          const isBInPress = b.toLowerCase() === 'in press';
-          if (isAInPress && !isBInPress) return -1;
-          if (!isAInPress && isBInPress) return 1;
+      function isInPress(p) {
+        if (!p.year) return false;
+        const y = String(p.year).toLowerCase();
+        return y.includes('press') || y.includes('ahead');
+      }
+
+      function renderSection(listEl, indexEl, groups) {
+        const years = Object.keys(groups).sort((a, b) => {
           const ai = parseInt(a) || -Infinity;
           const bi = parseInt(b) || -Infinity;
           return bi - ai;
         });
 
-        // Year index pills
+        // Year pills
         indexEl.innerHTML = years.map(y =>
-          `<a class="btn btn-sm btn-outline-light" href="#year-${CSS.escape(y)}">${y}</a>`
+          `<a class="btn btn-sm btn-outline-light" href="#y-${CSS.escape(y)}">${y}</a>`
         ).join('');
 
-        // Render lists
+        // Year blocks
         listEl.innerHTML = years.map(year => {
-          const items = byYear[year].map(p => {
+          const items = groups[year].map(p => {
             const title = p.title || 'Untitled';
             const authors = p.authors ? `<span class="text-white-50">${p.authors}</span>` : '';
             const venue = p.venue ? `<span class="pub-meta">${p.venue}</span>` : '';
@@ -138,7 +162,6 @@
             const linkHtml = link ? `<span class="pub-actions ms-1"><a href="${link}" target="_blank" rel="noopener">View</a></span>` : '';
             const cites = (p.cited_by && Number(p.cited_by) > 0)
               ? `<span class="ms-2 text-white-50">Cited by ${p.cited_by}</span>` : '';
-
             return `
               <li>
                 <strong>${title}</strong><br>
@@ -149,16 +172,72 @@
           }).join('');
 
           return `
-            <h3 id="year-${year}">${year}</h3>
-            <ul>
-              ${items}
-            </ul>
+            <h3 id="y-${year}" class="year-title">${year}</h3>
+            <ul>${items}</ul>
           `;
         }).join('');
+      }
+
+      try {
+        const res = await fetch('assets/publications.json', { cache: 'no-store' });
+        if (!res.ok) {
+          showError(elRecentList, elRecentIndex, `Failed to load publications.json (HTTP ${res.status}).`);
+          showError(elOtherList, elOtherIndex, '');
+          return;
+        }
+
+        const pubs = await res.json();
+        if (!Array.isArray(pubs)) {
+          showError(elRecentList, elRecentIndex, 'Publications file is not a JSON array.');
+          showError(elOtherList, elOtherIndex, '');
+          return;
+        }
+        if (pubs.length === 0) {
+          showError(elRecentList, elRecentIndex, 'No publications to display yet.');
+          showError(elOtherList, elOtherIndex, '');
+          return;
+        }
+
+        // Split into recent (>= 2025 or "In press") and older (< 2025)
+        const recent = [];
+        const older  = [];
+
+        for (const p of pubs) {
+          const y = toYear(p.year);
+          if (isInPress(p) || (Number.isFinite(y) && y >= RECENT_YEAR)) {
+            recent.push(p);
+          } else {
+            older.push(p);
+          }
+        }
+
+        // Group each section by year
+        const groupByYear = arr => arr.reduce((acc, p) => {
+          const key = (p.year && String(p.year).trim()) || 'In press';
+          (acc[key] ||= []).push(p);
+          return acc;
+        }, {});
+
+        const recentGroups = groupByYear(recent);
+        const olderGroups  = groupByYear(older);
+
+        // Render sections
+        if (recent.length) {
+          renderSection(elRecentList, elRecentIndex, recentGroups);
+        } else {
+          showError(elRecentList, elRecentIndex, 'No recent publications yet.');
+        }
+
+        if (older.length) {
+          renderSection(elOtherList, elOtherIndex, olderGroups);
+        } else {
+          showError(elOtherList, elOtherIndex, 'No earlier publications found.');
+        }
+
       } catch (e) {
         console.error(e);
-        listEl.innerHTML = `<div class="alert alert-warning">Couldn’t load publications right now.</div>`;
-        indexEl.innerHTML = '';
+        showError(elRecentList, elRecentIndex, "Couldn't load publications right now.");
+        showError(elOtherList, elOtherIndex, '');
       }
     })();
   </script>
