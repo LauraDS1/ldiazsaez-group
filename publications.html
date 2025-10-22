@@ -18,8 +18,8 @@
   <meta name="description" content="Publications — Antimicrobial Drug Discovery (IQF-CSIC, Madrid, Spain).">
 
   <style>
-    /* Subtle section styling for year headers and list spacing */
-    .pub-section h2 {
+    .pub-section h3 {
+      font-size: 1.5rem;
       margin-top: 0.5rem;
       margin-bottom: 0.75rem;
     }
@@ -32,7 +32,7 @@
       color: #e0e0e0;
     }
     .pub-list ul {
-      padding-left: 1rem; /* neat bullet alignment */
+      padding-left: 1rem;
       margin-bottom: 0;
     }
     .pub-list li {
@@ -66,12 +66,14 @@
     <main class="px-3 my-auto text-start">
       <div class="container my-5" style="max-width: 900px;">
 
-        <!-- Section 1: Recent (>= 2025 + In press) -->
+        <!-- Main Title -->
+        <h1 class="display-4 text-center mb-5">Publications</h1>
+
+        <!-- Section 1: Recent -->
         <section class="pub-section mb-5">
-          <h1 class="display-5 text-center mb-2">Recent scientific contributions from our group</h1>
+          <h3 class="text-center mb-2">Recent scientific contributions from our group</h3>
           <p class="lead text-center text-white-50 mb-4">Publications from 2025 onward (including “In press”).</p>
 
-          <!-- Year index (auto-filled) -->
           <div id="recent-index" class="year-pills d-flex flex-wrap justify-content-center mb-3"></div>
 
           <div id="recent-list" class="pub-list">
@@ -81,12 +83,11 @@
 
         <hr class="my-5">
 
-        <!-- Section 2: Older (< 2025) -->
+        <!-- Section 2: Older -->
         <section class="pub-section">
-          <h2 class="text-center mb-2">Other scientific contributions by Laura Díaz Sáez</h2>
+          <h3 class="text-center mb-2">Other scientific contributions by Laura Díaz Sáez</h3>
           <p class="lead text-center text-white-50 mb-4">Publications prior to 2025.</p>
 
-          <!-- Year index (auto-filled) -->
           <div id="other-index" class="year-pills d-flex flex-wrap justify-content-center mb-3"></div>
 
           <div id="other-list" class="pub-list">
@@ -172,7 +173,7 @@
           }).join('');
 
           return `
-            <h3 id="y-${year}" class="year-title">${year}</h3>
+            <h4 id="y-${year}" class="year-title">${year}</h4>
             <ul>${items}</ul>
           `;
         }).join('');
