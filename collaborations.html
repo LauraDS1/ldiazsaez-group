@@ -5,42 +5,140 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Collaborations — Laura Díaz Sáez Lab</title>
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Your styles -->
   <link rel="stylesheet" href="assets/site.css">
+
+  <!-- Leaflet CSS (map library) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    /* Map needs an explicit height */
+    #map { height: 520px; border-radius: 16px; }
+    /* Left-align content below your centered hero */
+    .content-wrap { text-align: left; }
+  </style>
 </head>
 <body class="d-flex h-100 text-center">
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<!-- Top navigation (like the example site) -->
+
+    <!-- Header -->
     <header class="mb-auto text-center">
-      <div>
-        <h3 class="mb-3">Antimicrobial Drug Discovery Lab</h3>
-        <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link fw-semibold active" aria-current="page" href="index.html">Home</a>
+      <h3 class="mb-3">Antimicrobial Drug Discovery Lab</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link fw-semibold" href="index.html">Home</a>
         <a class="nav-link fw-semibold" href="research.html">Research</a>
-        <a class="nav-link fw-semibold" href="collaborations.html">Collaborations</a>
+        <a class="nav-link fw-semibold active" aria-current="page" href="collaborations.html">Collaborations</a>
         <a class="nav-link fw-semibold" href="people.html">People</a>
         <a class="nav-link fw-semibold" href="publications.html">Publications</a>
         <a class="nav-link fw-semibold" href="join.html">Join us</a>
       </nav>
-      </div>
     </header>
 
-    <main class="px-3 my-auto">
-      <h1 class="display-4">Collaborators</h1>
-      <p class="lead mb-4">
-        In construction..
-      </p>
+    <!-- Hero -->
+    <main class="px-3 my-4">
+      <h1 class="display-5">Collaborators</h1>
+      <p class="lead mb-4">Explore our global network. Click a dot to see details.</p>
     </main>
+
+    <!-- Map + list -->
+    <section class="container content-wrap pb-5">
+      <div id="map" class="mb-4"></div>
+
+      <!-- (Optional) simple list underneath -->
+      <h2 class="h4 mb-3">Current collaborators</h2>
+      <ul id="collab-list" class="list-unstyled mb-0"></ul>
+    </section>
 
     <footer class="mt-auto text-white-50">
       <p class="mb-0">© <span id="year"></span> Laura Díaz Sáez Research Group</p>
     </footer>
   </div>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 1) Edit this array with your collaborators
+    // tip to find coordinates: in Google Maps, right-click a place → “What’s here?” → copy lat,lng
+    const collaborators = [
+      {
+        name: "Prof. A. Smith",
+        institution: "University of Oxford",
+        city: "Oxford, UK",
+        link: "https://www.ox.ac.uk/",
+        lat: 51.7548, lng: -1.2544
+      },
+      {
+        name: "Dr. B. García",
+        institution: "IQF, CSIC",
+        city: "Madrid, Spain",
+        link: "https://www.iqfr.csic.es/",
+        lat: 40.4168, lng: -3.7038
+      },
+      {
+        name: "Prof. C. Lee",
+        institution: "MIT",
+        city: "Cambridge, USA",
+        link: "https://web.mit.edu/",
+        lat: 42.3601, lng: -71.0942
+      }
+    ];
+
+    // 2) Create map (dark tiles to match your theme)
+    const map = L.map('map', { worldCopyJump: true });
+    const tiles = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      {
+        maxZoom: 19,
+        attribution:
+          '&copy; OpenStreetMap contributors &copy; CARTO'
+      }
+    ).addTo(map);
+
+    // 3) Add markers + popups
+    const markers = [];
+    collaborators.forEach(c => {
+      const m = L.marker([c.lat, c.lng]).addTo(map);
+      const html = `
+        <strong>${c.institution}</strong><br>
+        ${c.name}<br>
+        <small>${c.city}</small><br>
+        ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener">Website</a>` : ""}
+      `;
+      m.bindPopup(html);
+      markers.push(m);
+    });
+
+    // 4) Fit map to all markers (fallback to world view if none)
+    if (markers.length) {
+      const group = L.featureGroup(markers);
+      map.fitBounds(group.getBounds().pad(0.2));
+    } else {
+      map.setView([20, 0], 2);
+    }
+
+    // 5) Also render a simple list under the map (optional)
+    const list = document.getElementById('collab-list');
+    list.innerHTML = collaborators
+      .map(c => `<li class="mb-2">• <strong>${c.institution}</strong> — ${c.name} (${c.city})</li>`)
+      .join("");
+  </script>
 </body>
 </html>
