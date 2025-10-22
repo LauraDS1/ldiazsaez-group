@@ -1,0 +1,21 @@
+/* assets/site.css */
+/* Tweak colors + spacing while keeping the Cover layout feel */
+:root {
+  --brand-bg: #0b0f16;       /* deep navy */
+  --brand-fg: #e9ecef;       /* light text */
+  --brand-accent: #66b2ff;   /* link accent */
+}
+html, body { height: 100%; }
+body {
+  background: var(--brand-bg);
+  color: var(--brand-fg);
+}
+a { color: var(--brand-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.cover-container {
+  max-width: 44rem;
+}
+
+/* Optional: subtle divider spacing for the social/links row */
+.link-row a { margin-right: 1rem; }
