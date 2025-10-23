@@ -38,7 +38,7 @@
 
     <!-- Main content -->
     <main class="px-3 my-auto text-start">
-      <div class="container my-5" style="max-width: 900px;">
+      <div class="container my-5" style="max-width: 1100px;">
         <h1 class="display-4 text-center mb-4">Join Our Team</h1>
 
         <p class="lead text-center mb-5">
@@ -46,7 +46,7 @@
         </p>
 
         <section class="mb-5">
-          <h3 class="border-start border-3 ps-3 mb-3"> PhD Students</h3>
+          <h3 class="border-start border-3 ps-3 mb-3">PhD Students</h3>
           <p>
             We welcome applications from students with backgrounds in microbiology, biochemistry, pharmacology, bioinformatics or related fields who wish to pursue a PhD in our lab.
             Interested candidates are encouraged to contact <strong>Dr. Laura Díaz Sáez</strong> directly to discuss potential projects and funding opportunities.
@@ -55,7 +55,7 @@
         </section>
 
         <section class="mb-5">
-          <h3 class="border-start border-3 ps-3 mb-3"> Postdoctoral Researchers</h3>
+          <h3 class="border-start border-3 ps-3 mb-3">Postdoctoral Researchers</h3>
           <p>
             We are happy to support applications from postdoctoral researchers seeking independent fellowships.
             If you are interested in joining us, please get in touch early to plan a proposal and identify suitable funding sources (e.g., <em>Marie Curie</em>, <em>Juan de la Cierva</em>, <em>EMBO</em>).
@@ -63,7 +63,7 @@
         </section>
 
         <section class="mb-5">
-          <h3 class="border-start border-3 ps-3 mb-3"> MSc and Undergraduate Students</h3>
+          <h3 class="border-start border-3 ps-3 mb-3">MSc and Undergraduate Students</h3>
           <p>
             We offer research placements for motivated MSc and undergraduate students who wish to gain hands-on experience in antimicrobial research.
             Students can undertake thesis projects, laboratory training, or internships depending on current opportunities.
@@ -71,7 +71,7 @@
         </section>
 
         <section class="mb-5">
-          <h3 class="border-start border-3 ps-3 mb-3"> How to Apply</h3>
+          <h3 class="border-start border-3 ps-3 mb-3">How to Apply</h3>
           <p>
             If you are interested in joining our group, please email
             <a href="mailto:ldiaz@iqf.csic.es" class="link-light text-decoration-underline">
@@ -89,71 +89,91 @@
           </p>
         </section>
 
-        <!-- Contact Button -->
-        <div class="text-center mt-5 mb-4">
-          <a href="mailto:ldiaz@iqf.csic.es" class="btn btn-light btn-lg rounded-pill px-4">
-            Contact Us
-          </a>
-        </div>
+        <!-- =========================
+             Contact & Location section
+             ========================= -->
+        <section class="mt-5">
+          <h3 class="border-start border-3 ps-3 mb-4">Contact & Find Us</h3>
 
-        <!-- Contact Form -->
-        <div class="text-center mt-5 mb-3">
-          <h3 class="mb-3">Or send us a message directly</h3>
-        </div>
+          <div class="row g-4 align-items-start">
+            <!-- Left column: Contact Form -->
+            <div class="col-12 col-lg-6">
+              <form id="joinForm"
+                    action="https://formspree.io/f/mqayvbeg"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="bg-body-tertiary p-4 rounded-4 shadow-sm h-100">
+                <h5 class="mb-3 text-center">Send us a message</h5>
 
-        <!-- Add enctype for file uploads -->
-        <form id="joinForm"
-              action="https://formspree.io/f/mqayvbeg"
-              method="POST"
-              enctype="multipart/form-data"
-              class="bg-body-tertiary p-4 rounded-4 shadow-sm mx-auto"
-              style="max-width: 700px;">
-          <div class="mb-3">
-            <label for="name" class="form-label fw-semibold">Name</label>
-            <input type="text" name="name" id="name" class="form-control" required>
-          </div>
+                <div class="mb-3">
+                  <label for="name" class="form-label fw-semibold">Name</label>
+                  <input type="text" name="name" id="name" class="form-control" required>
+                </div>
 
-          <div class="mb-3">
-            <label for="email" class="form-label fw-semibold">Email</label>
-            <input type="email" name="_replyto" id="email" class="form-control" required>
-          </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label fw-semibold">Email</label>
+                  <input type="email" name="_replyto" id="email" class="form-control" required>
+                </div>
 
-          <div class="mb-3">
-            <label for="message" class="form-label fw-semibold">Message</label>
-            <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
-          </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label fw-semibold">Message</label>
+                  <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+                </div>
 
-          <!-- 📎 PDF attachments -->
-          <div class="mb-3">
-            <label for="files" class="form-label fw-semibold">Attach PDFs (CV, cover letter, etc.)</label>
-            <input type="file"
-                   name="files"
-                   id="files"
-                   class="form-control"
-                   accept="application/pdf"
-                   multiple>
-            <div class="form-text text-white-50">
-              PDF only. Max total size 15&nbsp;MB.
+                <!-- 📎 PDF attachments -->
+                <div class="mb-3">
+                  <label for="files" class="form-label fw-semibold">Attach PDFs (CV, cover letter, etc.)</label>
+                  <input type="file"
+                         name="files"
+                         id="files"
+                         class="form-control"
+                         accept="application/pdf"
+                         multiple>
+                  <div class="form-text text-white-50">
+                    PDF only. Max total size 15&nbsp;MB.
+                  </div>
+                  <ul id="fileList" class="mt-2 mb-0 small text-white-50"></ul>
+                </div>
+
+                <div id="fileAlert" class="alert alert-danger d-none" role="alert"></div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-light btn-lg rounded-pill px-4">
+                    Send Message
+                  </button>
+                </div>
+
+                <div id="thankYou" class="alert alert-success mt-4 text-center d-none" role="alert">
+                  Thank you for your interest!
+                </div>
+              </form>
             </div>
 
-            <!-- Selected files list -->
-            <ul id="fileList" class="mt-2 mb-0 small text-white-50"></ul>
+            <!-- Right column: Address + Map -->
+            <div class="col-12 col-lg-6">
+              <div class="bg-body-tertiary p-4 rounded-4 shadow-sm h-100">
+                <h5 class="mb-3 text-center">Our Location</h5>
+                <p class="text-white-50 mb-3">
+                  Instituto de Química Física Blas Cabrera (IQF-CSIC)<br>
+                  Calle Serrano, 119 — 28006 Madrid, Spain<br>
+                  <a href="https://maps.app.goo.gl/ZrUP9i4PwVrxhC3c9" target="_blank" class="link-light text-decoration-underline">
+                    Open in Google Maps
+                  </a>
+                </p>
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.633951903257!2d-3.6856212235456733!3d40.438598955331865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228d4235b0a05%3A0x299a9ddcdf53024b!2sInstituto%20de%20Qu%C3%ADmica%20F%C3%ADsica%20Blas%20Cabrera%20(IQF-CSIC)!5e0!3m2!1sen!2ses!4v1730065087502!5m2!1sen!2ses"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <!-- Alerts -->
-          <div id="fileAlert" class="alert alert-danger d-none" role="alert"></div>
-
-          <div class="text-center">
-            <button type="submit" class="btn btn-light btn-lg rounded-pill px-4">
-              Send Message
-            </button>
-          </div>
-
-          <!-- Thank You Message -->
-          <div id="thankYou" class="alert alert-success mt-4 text-center d-none" role="alert">
-            Thank you for your interest!
-          </div>
-        </form>
+        </section>
+        <!-- ========================= -->
       </div>
     </main>
 
@@ -171,7 +191,6 @@
     const filesInput = document.getElementById('files');
     const fileList = document.getElementById('fileList');
     const fileAlert = document.getElementById('fileAlert');
-
     const MAX_TOTAL = 15 * 1024 * 1024; // 15 MB total
 
     function human(n) {
@@ -180,35 +199,37 @@
         : (n / 1024).toFixed(0) + ' KB';
     }
 
-    filesInput.addEventListener('change', () => {
-      fileAlert.classList.add('d-none');
-      fileAlert.textContent = '';
-      fileList.innerHTML = '';
+    if (filesInput) {
+      filesInput.addEventListener('change', () => {
+        fileAlert.classList.add('d-none');
+        fileAlert.textContent = '';
+        fileList.innerHTML = '';
 
-      const files = Array.from(filesInput.files || []);
-      if (!files.length) return;
+        const files = Array.from(filesInput.files || []);
+        if (!files.length) return;
 
-      let total = 0;
-      const bad = [];
+        let total = 0;
+        const bad = [];
 
-      files.forEach(f => {
-        total += f.size;
-        if (f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
-          bad.push(f.name);
+        files.forEach(f => {
+          total += f.size;
+          if (f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
+            bad.push(f.name);
+          }
+          const li = document.createElement('li');
+          li.textContent = `${f.name} (${human(f.size)})`;
+          fileList.appendChild(li);
+        });
+
+        if (bad.length) {
+          fileAlert.textContent = `Only PDF files allowed. Remove: ${bad.join(', ')}`;
+          fileAlert.classList.remove('d-none');
+        } else if (total > MAX_TOTAL) {
+          fileAlert.textContent = `Total size ${human(total)} exceeds the 15 MB limit.`;
+          fileAlert.classList.remove('d-none');
         }
-        const li = document.createElement('li');
-        li.textContent = `${f.name} (${human(f.size)})`;
-        fileList.appendChild(li);
       });
-
-      if (bad.length) {
-        fileAlert.textContent = `Only PDF files allowed. Remove: ${bad.join(', ')}`;
-        fileAlert.classList.remove('d-none');
-      } else if (total > MAX_TOTAL) {
-        fileAlert.textContent = `Total size ${human(total)} exceeds the 15 MB limit.`;
-        fileAlert.classList.remove('d-none');
-      }
-    });
+    }
 
     // ====== Submit handling (Formspree) ======
     const form = document.getElementById('joinForm');
