@@ -10,10 +10,7 @@
   --link-hover: #ffffff;
 }
 
-html {
-  height: auto;
-  min-height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   /* background image relative to site.css location (assets/) */
