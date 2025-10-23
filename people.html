@@ -114,13 +114,227 @@
       </div>
     </main>
 
+<!-- Lab Photos -->
 
-  <!-- Former members -->
-     <h2 class="section-title">Pictures</h2>
-     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 person-card">
-       <!-- Add former members here -->
-     </div>
-  </main>
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>People — Laura Díaz Sáez Lab</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+
+  <!-- Site-wide styles -->
+  <link rel="stylesheet" href="assets/site.css">
+
+  <!-- Page-only tweak: widen the cover to fit a grid -->
+  <style>
+    .cover-container { max-width: 1100px; }
+    /* Photo grid helpers */
+    .photo-thumb { cursor: zoom-in; border-radius: 12px; }
+    .photo-item .ratio { border-radius: 12px; overflow: hidden; }
+    .photo-caption { color: #d0d0d0; font-size: . Nine; } /* subtle under-thumb caption */
+  </style>
+</head>
+
+<body class="d-flex h-100 text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <!-- Top navigation -->
+    <header class="mb-auto text-center">
+      <div>
+        <h3 class="mb-3">Antimicrobial Drug Discovery Lab</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link fw-semibold" href="index.html">Home</a>
+          <a class="nav-link fw-semibold" href="research.html">Research</a>
+          <a class="nav-link fw-semibold" href="collaborations.html">Collaborations</a>
+          <a class="nav-link fw-semibold active" aria-current="page" href="people.html">People</a>
+          <a class="nav-link fw-semibold" href="publications.html">Publications</a>
+          <a class="nav-link fw-semibold" href="join.html">Join us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="px-3 my-auto text-start">
+      <h1 class="display-4 text-center mb-4">People</h1>
+      <p class="lead text-center text-white-50 mb-5">
+        Meet the team driving our antimicrobial drug discovery research.
+      </p>
+
+      <!-- IQF-CSIC -->
+      <h2 class="section-title">IQF-CSIC</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 person-card">
+
+        <!-- Example card -->
+        <div class="col">
+          <div class="card bg-body-tertiary h-100 shadow-sm">
+            <img src="assets/people/laura-diaz-saez.jpg" alt="Laura Díaz Sáez" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Laura Díaz Sáez</h5>
+              <div class="role mb-2">Principal Investigator</div>
+              <p class="card-text small text-white-50">
+                Antimicrobial drug discovery; resistance; chemical biology.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Duplicate this <div class="col">…</div> for each person -->
+        <div class="col">
+          <div class="card bg-body-tertiary h-100 shadow-sm">
+            <img src="assets/people/member-1.jpg" alt="Member name" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Member Name</h5>
+              <div class="role mb-2">Postdoctoral Researcher</div>
+              <p class="card-text small text-white-50">Short research interest or role description.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- University of Warwick -->
+      <h2 class="section-title">University of Warwick</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 person-card">
+
+        <div class="col">
+          <div class="card bg-body-tertiary h-100 shadow-sm">
+            <img src="assets/people/warwick-1.jpg" alt="Member name" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Member Name</h5>
+              <div class="role mb-2">Postdoctoral Researcher</div>
+              <p class="card-text small text-white-50">Short research interest or role description.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card bg-body-tertiary h-100 shadow-sm">
+            <img src="assets/people/warwick-2.jpg" alt="Member name" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Member Name</h5>
+              <div class="role mb-2">PhD Student</div>
+              <p class="card-text small text-white-50">Short research interest or role description.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Former members -->
+      <h2 class="section-title">Former Members</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 person-card">
+        <!-- Add former members here -->
+      </div>
+
+      <!-- Lab Photos -->
+      <h2 class="section-title">Lab Photos</h2>
+      <p class="text-white-50 mb-3">Snapshots from our lab and events.</p>
+
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3" id="photo-grid">
+        <!-- Example thumbnails (replace with your images in assets/photos/) -->
+        <div class="col photo-item">
+          <div class="ratio ratio-1x1">
+            <img
+              src="assets/photos/lab-1.jpg"
+              alt="Crystallography setup"
+              class="w-100 h-100 object-fit-cover photo-thumb"
+              data-full="assets/photos/lab-1.jpg"
+              data-caption="Crystallography setup"
+            >
+          </div>
+        </div>
+        <div class="col photo-item">
+          <div class="ratio ratio-1x1">
+            <img
+              src="assets/photos/lab-2.jpg"
+              alt="Team meeting"
+              class="w-100 h-100 object-fit-cover photo-thumb"
+              data-full="assets/photos/lab-2.jpg"
+              data-caption="Team meeting"
+            >
+          </div>
+        </div>
+        <div class="col photo-item">
+          <div class="ratio ratio-1x1">
+            <img
+              src="assets/photos/lab-3.jpg"
+              alt="Microscopy session"
+              class="w-100 h-100 object-fit-cover photo-thumb"
+              data-full="assets/photos/lab-3.jpg"
+              data-caption="Microscopy session"
+            >
+          </div>
+        </div>
+        <div class="col photo-item">
+          <div class="ratio ratio-1x1">
+            <img
+              src="assets/photos/lab-4.jpg"
+              alt="Conference poster"
+              class="w-100 h-100 object-fit-cover photo-thumb"
+              data-full="assets/photos/lab-4.jpg"
+              data-caption="Conference poster"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal viewer (Bootstrap) -->
+      <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content bg-dark">
+            <div class="modal-header border-0">
+              <h5 class="modal-title" id="photoCaption"></h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+              <img id="photoFull" src="" alt="" class="w-100 d-block" style="max-height:80vh; object-fit:contain;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Lab Photos -->
+
+    </main>
+
+    <footer class="mt-auto text-white-50">
+      <p class="mb-0">© <span id="year"></span> Laura Díaz Sáez Research Group</p>
+    </footer>
+  </div>
+
+  <!-- JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple modal gallery
+    const modalEl   = document.getElementById('photoModal');
+    const modalImg  = document.getElementById('photoFull');
+    const modalCap  = document.getElementById('photoCaption');
+    const bsModal   = new bootstrap.Modal(modalEl);
+
+    document.getElementById('photo-grid').addEventListener('click', (e) => {
+      const img = e.target.closest('img.photo-thumb');
+      if (!img) return;
+      modalImg.src = img.dataset.full || img.src;
+      modalImg.alt = img.alt || '';
+      modalCap.textContent = img.dataset.caption || img.alt || '';
+      bsModal.show();
+    });
+  </script>
+  
 
     <footer class="mt-auto text-white-50">
       <p class="mb-0">© <span id="year"></span> Laura Díaz Sáez Research Group</p>
