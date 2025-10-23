@@ -16,7 +16,7 @@ body {
   /* background image relative to site.css location (assets/) */
   background-image:
     linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-    url('./Intro.png');
+    url('./Intro2.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
