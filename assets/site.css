@@ -1,40 +1,151 @@
-/* assets/site.css */
-/* Tweak colors + spacing while keeping the Cover layout feel */
+/* ===========================
+   Global Theme (dark, cover-style)
+   =========================== */
 :root {
-  --brand-bg: #0b0f16;       /* deep navy */
-  --brand-fg: #e9ecef;       /* light text */
-  --brand-accent: #66b2ff;   /* link accent */
+  --bg-overlay: rgba(0, 0, 0, 0.55);
+  --text: #e9ecef;
+  --text-muted: #cfcfcf;
+  --accent: #86b7fe;   /* active underline / accents */
+  --link: #bcd4ff;     /* link color on dark bg */
+  --link-hover: #ffffff;
 }
+
 html, body { height: 100%; }
-body {
-  background: var(--brand-bg);
-  color: var(--brand-fg);
-}
-a { color: var(--brand-accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-.cover-container {
-  max-width: 44rem;
-}
-
-/* Optional: subtle divider spacing for the social/links row */
-.link-row a { margin-right: 1rem; }
-
-
 
 body {
-  background: url('assets/Intro.png') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  /* Background image + soft dark gradient so text stays readable */
+  background:
+    linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+    url('assets/intro.png') center / cover no-repeat fixed;
+  color: var(--text);
+  font-size: 1.05rem;  /* slightly larger default text */
+  margin: 0;
 }
 
+/* Outer wrapper used by all pages (your layout) */
 .cover-container {
-  background-color: rgba(0, 0, 0, 0.55);
+  max-width: 44rem;           /* keep your original width for the “cover” pages */
+  background-color: var(--bg-overlay);
   border-radius: 10px;
   padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
 
+/* If you ever want a page WITHOUT overlay, add class="no-overlay" on <body> */
+body.no-overlay .cover-container {
+  background: transparent;
+  box-shadow: none;
+}
 
+/* ===========================
+   Typography
+   =========================== */
+h1.display-4, .display-4 { font-size: 2.75rem; }
+h1, .h1 { font-weight: 600; }
+h2, .h2 { font-weight: 600; font-size: 1.75rem; }
+h3, .h3 { font-weight: 600; font-size: 1.5rem; }
 
+.lead { font-size: 1.15rem; color: var(--text-muted); }
+.text-white-50 { color: #d0d0d0 !important; }
 
+/* Links (including quick link row on home) */
+a, .link-row a { color: var(--link); text-decoration: none; }
+a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underline; }
+.link-row a { margin-right: 1rem; }
+
+/* ===========================
+   Navbar (Bootstrap cover-like)
+   =========================== */
+.nav-masthead .nav-link {
+  padding: .25rem .75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+  background: transparent;
+  border-bottom: .25rem solid transparent;
+}
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.nav-masthead .nav-link.active {
+  color: #fff;
+  border-bottom-color: var(--accent);
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* ===========================
+   Cards / Surfaces
+   =========================== */
+.bg-body-tertiary { background-color: rgba(255,255,255,.06) !important; }
+.card {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+}
+.card .card-title { font-size: 1.25rem; }
+
+/* ===========================
+   Publications page helpers
+   =========================== */
+.year-title {
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+  border-left: 4px solid #6c757d;
+  padding-left: 10px;
+  color: #e0e0e0;
+}
+.pub-list ul,
+#pub-list ul {
+  padding-left: 1rem;  /* neat bullet alignment */
+  margin-bottom: 0;
+}
+.pub-list li,
+#pub-list li {
+  margin-bottom: .85rem;
+  line-height: 1.5;
+}
+.pub-meta { font-style: italic; }
+.pub-actions a { text-decoration: underline; }
+
+/* ===========================
+   People grid (headshots)
+   =========================== */
+.person-card .card-img-top {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.section-title {
+  border-left: 4px solid #6c757d;
+  padding-left: 12px;
+  color: #e6e6e6;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+footer a { color: var(--link); }
+footer a:hover { color: var(--link-hover); }
+
+/* ===========================
+   Responsive tweaks
+   =========================== */
+@media (max-width: 576px) {
+  .cover-container { padding: 1.25rem; }
+  h1.display-4 { font-size: 2.25rem; }
+}
