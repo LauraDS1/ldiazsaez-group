@@ -13,14 +13,19 @@
 html, body { height: 100%; }
 
 body {
-  /* Background image + soft dark gradient so text stays readable */
-  background:
+  /* background image relative to site.css location (assets/) */
+  background-image:
     linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-    url('Intro.png') center / cover no-repeat fixed;
+    url('./Intro.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll; /* try scroll first; fixed can fail on iOS */
   color: var(--text);
-  font-size: 1.05rem;  /* slightly larger default text */
+  font-size: 1.05rem;
   margin: 0;
 }
+
 
 /* Outer wrapper used by all pages (your layout) */
 .cover-container {
