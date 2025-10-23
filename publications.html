@@ -87,135 +87,143 @@
   ></script>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    (async function () {
-      const RECENT_YEAR = 2025;
+  (async function () {
+    const RECENT_YEAR = 2025;
 
-      const elRecentList  = document.getElementById('recent-list');
-      const elRecentIndex = document.getElementById('recent-index');
-      const elOtherList   = document.getElementById('other-list');
-      const elOtherIndex  = document.getElementById('other-index');
+    const elRecentList  = document.getElementById('recent-list');
+    const elRecentIndex = document.getElementById('recent-index');
+    const elOtherList   = document.getElementById('other-list');
+    const elOtherIndex  = document.getElementById('other-index');
 
-      function showError(targetList, targetIndex, msg) {
-        targetList.innerHTML = `<div class="alert alert-warning">${msg}</div>`;
-        targetIndex.innerHTML = '';
-      }
+    function showError(targetList, targetIndex, msg) {
+      targetList.innerHTML = `<div class="alert alert-warning">${msg}</div>`;
+      targetIndex.innerHTML = '';
+    }
 
-      function toYear(v) {
-        if (!v) return NaN;
-        const n = parseInt(v, 10);
-        return Number.isFinite(n) ? n : NaN;
-      }
+    function toYear(v) {
+      if (!v) return NaN;
+      const n = parseInt(v, 10);
+      return Number.isFinite(n) ? n : NaN;
+    }
 
-      function isInPress(p) {
-        if (!p.year) return false;
-        const y = String(p.year).toLowerCase();
-        return y.includes('press') || y.includes('ahead');
-      }
+    function isInPress(p) {
+      if (!p.year) return false;
+      const y = String(p.year).toLowerCase();
+      return y.includes('press') || y.includes('ahead');
+    }
 
-      function renderSection(listEl, indexEl, groups) {
-        const years = Object.keys(groups).sort((a, b) => {
-          const ai = parseInt(a) || -Infinity;
-          const bi = parseInt(b) || -Infinity;
-          return bi - ai;
-        });
+    // Make a safe fragment/id: "In press" -> "in-press", "2025" -> "2025"
+    function slug(v) {
+      return String(v)
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w]+/g, '-')   // non-word -> dashes
+        .replace(/-+/g, '-')       // collapse dashes
+        .replace(/^-|-$/g, '');    // trim dashes
+    }
 
-        // Year pills (Bootstrap buttons; no custom CSS needed)
-        indexEl.innerHTML = years.map(y =>
-          `<a class="btn btn-sm btn-outline-light" href="#y-${CSS.escape(y)}">${y}</a>`
-        ).join('');
+    function renderSection(listEl, indexEl, groups) {
+      const years = Object.keys(groups).sort((a, b) => {
+        const ai = parseInt(a) || -Infinity;
+        const bi = parseInt(b) || -Infinity;
+        return bi - ai;
+      });
 
-        // Year blocks
-        listEl.innerHTML = years.map(year => {
-          const items = groups[year].map(p => {
-            const title = p.title || 'Untitled';
-            const authors = p.authors ? `<span class="text-white-50">${p.authors}</span>` : '';
-            const venue = p.venue ? `<span class="pub-meta">${p.venue}</span>` : '';
-            const yearTxt = p.year ? ` (${p.year})` : '';
-            const link = p.url || p.eprint_url;
-            const linkHtml = link ? `<span class="pub-actions ms-1"><a href="${link}" target="_blank" rel="noopener">View</a></span>` : '';
-            const cites = (p.cited_by && Number(p.cited_by) > 0)
-              ? `<span class="ms-2 text-white-50">Cited by ${p.cited_by}</span>` : '';
-            return `
-              <li class="mb-3">
-                <strong>${title}</strong><br>
-                ${authors ? `${authors}<br>` : ''}
-                ${venue}${yearTxt} ${linkHtml} ${cites}
-              </li>
-            `;
-          }).join('');
+      // Year pills (use the SAME slug for href and id)
+      indexEl.innerHTML = years.map(y => {
+        const yid = `y-${slug(y)}`;
+        return `<a class="btn btn-sm btn-outline-light" href="#${yid}">${y}</a>`;
+      }).join('');
 
+      // Year blocks
+      listEl.innerHTML = years.map(year => {
+        const yid = `y-${slug(year)}`;
+        const items = groups[year].map(p => {
+          const title = p.title || 'Untitled';
+          const authors = p.authors ? `<span class="text-white-50">${p.authors}</span>` : '';
+          const venue = p.venue ? `<span class="pub-meta">${p.venue}</span>` : '';
+          const yearTxt = p.year ? ` (${p.year})` : '';
+          const link = p.url || p.eprint_url;
+          const linkHtml = link ? `<span class="pub-actions ms-1"><a href="${link}" target="_blank" rel="noopener">View</a></span>` : '';
+          const cites = (p.cited_by && Number(p.cited_by) > 0)
+            ? `<span class="ms-2 text-white-50">Cited by ${p.cited_by}</span>` : '';
           return `
-            <h4 id="y-${year}" class="year-title">${year}</h4>
-            <ul class="mt-2">${items}</ul>
+            <li class="mb-3">
+              <strong>${title}</strong><br>
+              ${authors ? `${authors}<br>` : ''}
+              ${venue}${yearTxt} ${linkHtml} ${cites}
+            </li>
           `;
         }).join('');
-      }
 
-      try {
-        const res = await fetch('assets/publications.json', { cache: 'no-store' });
-        if (!res.ok) {
-          showError(elRecentList, elRecentIndex, `Failed to load publications.json (HTTP ${res.status}).`);
-          showError(elOtherList, elOtherIndex, '');
-          return;
-        }
+        return `
+          <h4 id="${yid}" class="year-title">${year}</h4>
+          <ul class="mt-2">${items}</ul>
+        `;
+      }).join('');
+    }
 
-        const pubs = await res.json();
-        if (!Array.isArray(pubs)) {
-          showError(elRecentList, elRecentIndex, 'Publications file is not a JSON array.');
-          showError(elOtherList, elOtherIndex, '');
-          return;
-        }
-        if (pubs.length === 0) {
-          showError(elRecentList, elRecentIndex, 'No publications to display yet.');
-          showError(elOtherList, elOtherIndex, '');
-          return;
-        }
-
-        // Split into recent (>= 2025 or "In press") and older (< 2025)
-        const recent = [];
-        const older  = [];
-
-        for (const p of pubs) {
-          const y = toYear(p.year);
-          if (isInPress(p) || (Number.isFinite(y) && y >= RECENT_YEAR)) {
-            recent.push(p);
-          } else {
-            older.push(p);
-          }
-        }
-
-        // Group by year
-        const groupByYear = arr => arr.reduce((acc, p) => {
-          const key = (p.year && String(p.year).trim()) || 'In press';
-          (acc[key] ||= []).push(p);
-          return acc;
-        }, {});
-
-        const recentGroups = groupByYear(recent);
-        const olderGroups  = groupByYear(older);
-
-        // Render
-        if (recent.length) {
-          renderSection(elRecentList, elRecentIndex, recentGroups);
-        } else {
-          showError(elRecentList, elRecentIndex, 'No recent publications yet.');
-        }
-
-        if (older.length) {
-          renderSection(elOtherList, elOtherIndex, olderGroups);
-        } else {
-          showError(elOtherList, elOtherIndex, 'No earlier publications found.');
-        }
-
-      } catch (e) {
-        console.error(e);
-        showError(elRecentList, elRecentIndex, "Couldn't load publications right now.");
+    try {
+      const res = await fetch('assets/publications.json', { cache: 'no-store' });
+      if (!res.ok) {
+        showError(elRecentList, elRecentIndex, `Failed to load publications.json (HTTP ${res.status}).`);
         showError(elOtherList, elOtherIndex, '');
+        return;
       }
-    })();
-  </script>
+
+      const pubs = await res.json();
+      if (!Array.isArray(pubs)) {
+        showError(elRecentList, elRecentIndex, 'Publications file is not a JSON array.');
+        showError(elOtherList, elOtherIndex, '');
+        return;
+      }
+      if (pubs.length === 0) {
+        showError(elRecentList, elRecentIndex, 'No publications to display yet.');
+        showError(elOtherList, elOtherIndex, '');
+        return;
+      }
+
+      const recent = [];
+      const older  = [];
+      for (const p of pubs) {
+        const y = toYear(p.year);
+        if (isInPress(p) || (Number.isFinite(y) && y >= RECENT_YEAR)) {
+          recent.push(p);
+        } else {
+          older.push(p);
+        }
+      }
+
+      const groupByYear = arr => arr.reduce((acc, p) => {
+        const key = (p.year && String(p.year).trim()) || 'In press';
+        (acc[key] ||= []).push(p);
+        return acc;
+      }, {});
+
+      const recentGroups = groupByYear(recent);
+      const olderGroups  = groupByYear(older);
+
+      if (recent.length) renderSection(elRecentList, elRecentIndex, recentGroups);
+      else showError(elRecentList, elRecentIndex, 'No recent publications yet.');
+
+      if (older.length) renderSection(elOtherList, elOtherIndex, olderGroups);
+      else showError(elOtherList, elOtherIndex, 'No earlier publications found.');
+
+      // Optional: if page loads with a hash, scroll to it smoothly
+      if (location.hash && location.hash.startsWith('#y-')) {
+        const t = document.querySelector(location.hash);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (e) {
+      console.error(e);
+      showError(elRecentList, elRecentIndex, "Couldn't load publications right now.");
+      showError(elOtherList, elOtherIndex, '');
+    }
+  })();
+</script>
+
 
   <!-- Smooth scroll and center the year when clicking a date -->
   <script>
