@@ -19,3 +19,19 @@ a:hover { text-decoration: underline; }
 
 /* Optional: subtle divider spacing for the social/links row */
 .link-row a { margin-right: 1rem; }
+
+
+
+body {
+  background: url('assets/intro.png') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.cover-container {
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
