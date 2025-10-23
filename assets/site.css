@@ -16,7 +16,7 @@ body {
   /* Background image + soft dark gradient so text stays readable */
   background:
     linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-    url('assets/Intro.png') center / cover no-repeat fixed;
+    url('Intro.png') center / cover no-repeat fixed;
   color: var(--text);
   font-size: 1.05rem;  /* slightly larger default text */
   margin: 0;
