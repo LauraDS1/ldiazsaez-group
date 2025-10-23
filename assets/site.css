@@ -20,7 +20,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: scroll; /* try scroll first; fixed can fail on iOS */
+  background-attachment: fixed; /* try scroll first; fixed can fail on iOS */
   color: var(--text);
   font-size: 1.05rem;
   margin: 0;
