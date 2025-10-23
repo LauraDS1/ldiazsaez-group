@@ -10,11 +10,15 @@
   --link-hover: #ffffff;
 }
 
-html, body { height: 100%; }
+html {
+  height: auto;
+  min-height: 100%;
+}
 
 body {
   /* background image relative to site.css location (assets/) */
-  background-image:
+ min-height: 100vh; /* ocupa toda la altura de la ventana */
+ background-image:
     linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
     url('./Intro4.png');
   background-position: center;
