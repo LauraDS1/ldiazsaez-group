@@ -16,32 +16,6 @@
   <!-- Site overrides -->
   <link rel="stylesheet" href="assets/site.css">
   <meta name="description" content="Publications — Antimicrobial Drug Discovery (IQF-CSIC, Madrid, Spain).">
-
-  <style>
-    .pub-section h3 {
-      font-size: 1.5rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .year-pills a { margin: 0.2rem; }
-    .year-title {
-      margin-top: 2rem;
-      margin-bottom: .75rem;
-      border-left: 4px solid #6c757d;
-      padding-left: 10px;
-      color: #e0e0e0;
-    }
-    .pub-list ul {
-      padding-left: 1rem;
-      margin-bottom: 0;
-    }
-    .pub-list li {
-      margin-bottom: .85rem;
-      line-height: 1.5;
-    }
-    .pub-meta { font-style: italic; }
-    .pub-actions a { text-decoration: underline; }
-  </style>
 </head>
 
 <body class="d-flex h-100 text-center">
@@ -62,40 +36,40 @@
       </div>
     </header>
 
-    <!-- Main content -->
+    <!-- Main content (same cover layout) -->
     <main class="px-3 my-auto text-start">
-      <div class="container my-5" style="max-width: 900px;">
+      <!-- Main Title to match other pages -->
+      <h1 class="display-4 text-center mb-4">Publications</h1>
 
-        <!-- Main Title -->
-        <h1 class="display-4 text-center mb-5">Publications</h1>
+      <!-- Section 1: Recent -->
+      <section class="mb-5">
+        <h3 class="text-center mb-2">Recent scientific contributions from our group</h3>
+        <p class="lead text-center text-white-50 mb-4">Publications from 2025 onward (including “In press”).</p>
 
-        <!-- Section 1: Recent -->
-        <section class="pub-section mb-5">
-          <h3 class="text-center mb-2">Recent scientific contributions from our group</h3>
-          <p class="lead text-center text-white-50 mb-4">Publications from 2025 onward (including “In press”).</p>
+        <!-- Year index -->
+        <div id="recent-index" class="d-flex flex-wrap justify-content-center gap-2 mb-3"></div>
 
-          <div id="recent-index" class="year-pills d-flex flex-wrap justify-content-center mb-3"></div>
+        <!-- List -->
+        <div id="recent-list" class="pub-list">
+          <p class="text-center text-white-50">Loading…</p>
+        </div>
+      </section>
 
-          <div id="recent-list" class="pub-list">
-            <p class="text-center text-white-50">Loading…</p>
-          </div>
-        </section>
+      <hr class="my-5">
 
-        <hr class="my-5">
+      <!-- Section 2: Older -->
+      <section>
+        <h3 class="text-center mb-2">Other scientific contributions by Laura Díaz Sáez</h3>
+        <p class="lead text-center text-white-50 mb-4">Publications prior to 2025.</p>
 
-        <!-- Section 2: Older -->
-        <section class="pub-section">
-          <h3 class="text-center mb-2">Other scientific contributions by Laura Díaz Sáez</h3>
-          <p class="lead text-center text-white-50 mb-4">Publications prior to 2025.</p>
+        <!-- Year index -->
+        <div id="other-index" class="d-flex flex-wrap justify-content-center gap-2 mb-3"></div>
 
-          <div id="other-index" class="year-pills d-flex flex-wrap justify-content-center mb-3"></div>
-
-          <div id="other-list" class="pub-list">
-            <p class="text-center text-white-50">Loading…</p>
-          </div>
-        </section>
-
-      </div>
+        <!-- List -->
+        <div id="other-list" class="pub-list">
+          <p class="text-center text-white-50">Loading…</p>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -147,7 +121,7 @@
           return bi - ai;
         });
 
-        // Year pills
+        // Year pills (Bootstrap buttons; no custom CSS needed)
         indexEl.innerHTML = years.map(y =>
           `<a class="btn btn-sm btn-outline-light" href="#y-${CSS.escape(y)}">${y}</a>`
         ).join('');
@@ -164,7 +138,7 @@
             const cites = (p.cited_by && Number(p.cited_by) > 0)
               ? `<span class="ms-2 text-white-50">Cited by ${p.cited_by}</span>` : '';
             return `
-              <li>
+              <li class="mb-3">
                 <strong>${title}</strong><br>
                 ${authors ? `${authors}<br>` : ''}
                 ${venue}${yearTxt} ${linkHtml} ${cites}
@@ -174,7 +148,7 @@
 
           return `
             <h4 id="y-${year}" class="year-title">${year}</h4>
-            <ul>${items}</ul>
+            <ul class="mt-2">${items}</ul>
           `;
         }).join('');
       }
@@ -212,7 +186,7 @@
           }
         }
 
-        // Group each section by year
+        // Group by year
         const groupByYear = arr => arr.reduce((acc, p) => {
           const key = (p.year && String(p.year).trim()) || 'In press';
           (acc[key] ||= []).push(p);
@@ -222,7 +196,7 @@
         const recentGroups = groupByYear(recent);
         const olderGroups  = groupByYear(older);
 
-        // Render sections
+        // Render
         if (recent.length) {
           renderSection(elRecentList, elRecentIndex, recentGroups);
         } else {
