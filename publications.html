@@ -216,5 +216,35 @@
       }
     })();
   </script>
+
+  <!-- Smooth scroll and center the year when clicking a date -->
+  <script>
+    function scrollToCenter(target) {
+      const rect = target.getBoundingClientRect();
+      const absoluteTop = window.scrollY + rect.top;
+      const y = Math.max(absoluteTop - (window.innerHeight - rect.height) / 2, 0);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#y-"]');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      e.preventDefault();
+      history.replaceState(null, '', '#' + id);
+      scrollToCenter(target);
+    });
+
+    window.addEventListener('load', () => {
+      const id = (location.hash || '').slice(1);
+      if (id && id.startsWith('y-')) {
+        const target = document.getElementById(id);
+        if (target) setTimeout(() => scrollToCenter(target), 100);
+      }
+    });
+  </script>
 </body>
 </html>
