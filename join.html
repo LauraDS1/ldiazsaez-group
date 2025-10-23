@@ -13,17 +13,12 @@
 
   <style>
     /* Fade animation for thank-you message */
-    #thankYou {
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-    }
-    #thankYou.show {
-      opacity: 1;
-    }
+    #thankYou { opacity: 0; transition: opacity 0.8s ease-in-out; }
+    #thankYou.show { opacity: 1; }
   </style>
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="d-flex h-100 text-center">
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
     <!-- Navigation -->
@@ -106,8 +101,13 @@
           <h3 class="mb-3">Or send us a message directly</h3>
         </div>
 
-        <form id="joinForm" action="https://formspree.io/f/mqayvbeg" method="POST"
-              class="bg-body-tertiary p-4 rounded-4 shadow-sm mx-auto" style="max-width: 700px;">
+        <!-- Add enctype for file uploads -->
+        <form id="joinForm"
+              action="https://formspree.io/f/mqayvbeg"
+              method="POST"
+              enctype="multipart/form-data"
+              class="bg-body-tertiary p-4 rounded-4 shadow-sm mx-auto"
+              style="max-width: 700px;">
           <div class="mb-3">
             <label for="name" class="form-label fw-semibold">Name</label>
             <input type="text" name="name" id="name" class="form-control" required>
@@ -122,6 +122,26 @@
             <label for="message" class="form-label fw-semibold">Message</label>
             <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
           </div>
+
+          <!-- 📎 PDF attachments -->
+          <div class="mb-3">
+            <label for="files" class="form-label fw-semibold">Attach PDFs (CV, cover letter, etc.)</label>
+            <input type="file"
+                   name="files"
+                   id="files"
+                   class="form-control"
+                   accept="application/pdf"
+                   multiple>
+            <div class="form-text text-white-50">
+              PDF only. Max total size 15&nbsp;MB.
+            </div>
+
+            <!-- Selected files list -->
+            <ul id="fileList" class="mt-2 mb-0 small text-white-50"></ul>
+          </div>
+
+          <!-- Alerts -->
+          <div id="fileAlert" class="alert alert-danger d-none" role="alert"></div>
 
           <div class="text-center">
             <button type="submit" class="btn btn-light btn-lg rounded-pill px-4">
@@ -147,13 +167,75 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Show fading thank-you message on successful submission
+    // ====== File selection preview + validation ======
+    const filesInput = document.getElementById('files');
+    const fileList = document.getElementById('fileList');
+    const fileAlert = document.getElementById('fileAlert');
+
+    const MAX_TOTAL = 15 * 1024 * 1024; // 15 MB total
+
+    function human(n) {
+      return n > 1024 * 1024
+        ? (n / (1024 * 1024)).toFixed(1) + ' MB'
+        : (n / 1024).toFixed(0) + ' KB';
+    }
+
+    filesInput.addEventListener('change', () => {
+      fileAlert.classList.add('d-none');
+      fileAlert.textContent = '';
+      fileList.innerHTML = '';
+
+      const files = Array.from(filesInput.files || []);
+      if (!files.length) return;
+
+      let total = 0;
+      const bad = [];
+
+      files.forEach(f => {
+        total += f.size;
+        if (f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
+          bad.push(f.name);
+        }
+        const li = document.createElement('li');
+        li.textContent = `${f.name} (${human(f.size)})`;
+        fileList.appendChild(li);
+      });
+
+      if (bad.length) {
+        fileAlert.textContent = `Only PDF files allowed. Remove: ${bad.join(', ')}`;
+        fileAlert.classList.remove('d-none');
+      } else if (total > MAX_TOTAL) {
+        fileAlert.textContent = `Total size ${human(total)} exceeds the 15 MB limit.`;
+        fileAlert.classList.remove('d-none');
+      }
+    });
+
+    // ====== Submit handling (Formspree) ======
     const form = document.getElementById('joinForm');
     const thankYou = document.getElementById('thankYou');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formData = new FormData(form);
+
+      // Validate again before submit
+      const files = Array.from(filesInput.files || []);
+      let total = files.reduce((s, f) => s + f.size, 0);
+      const hasNonPdf = files.some(f => f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf'));
+
+      if (hasNonPdf) {
+        fileAlert.textContent = 'Only PDF files are allowed.';
+        fileAlert.classList.remove('d-none');
+        return;
+      }
+      if (total > MAX_TOTAL) {
+        fileAlert.textContent = `Total size ${human(total)} exceeds the 15 MB limit.`;
+        fileAlert.classList.remove('d-none');
+        return;
+      }
+      fileAlert.classList.add('d-none');
+
+      const formData = new FormData(form); // includes files automatically
+
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -162,9 +244,10 @@
 
       if (response.ok) {
         form.reset();
+        fileList.innerHTML = '';
+        thankYou.textContent = 'Thank you for your interest!';
         thankYou.classList.remove('d-none');
         thankYou.classList.add('show');
-        // Hide again after 5 seconds
         setTimeout(() => {
           thankYou.classList.remove('show');
           setTimeout(() => thankYou.classList.add('d-none'), 800);
