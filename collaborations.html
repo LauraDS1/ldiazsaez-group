@@ -168,9 +168,9 @@
       }
     ).addTo(map);
 
-        // 3) Add markers + popups
-    const markers = {};
-    collaborators.forEach(c => {
+      // 3) Add markers + popups (keyed by unique id)
+    const markersById = {};
+    collaborators.forEach((c, i) => {
       const marker = L.marker([c.lat, c.lng]).addTo(map);
       const popupHtml = `
         <strong>${c.institution}</strong><br>
@@ -179,50 +179,45 @@
         ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener">Website</a>` : ""}
       `;
       marker.bindPopup(popupHtml);
-      markers[c.institution] = marker;
+      markersById[i] = marker;          // ✅ key by index, not institution
     });
 
     // 4) Fit map to all markers (fallback to world view if none)
-    if (Object.keys(markers).length) {
-      const group = L.featureGroup(Object.values(markers));
+    if (Object.keys(markersById).length) {
+      const group = L.featureGroup(Object.values(markersById));
       map.fitBounds(group.getBounds().pad(0.2));
     } else {
       map.setView([20, 0], 2);
     }
 
-    // 5) Render clickable collaborator list (Name first)
+    // 5) Render clickable collaborator list (Name first) with data-id
     const list = document.getElementById('collab-list');
-    list.innerHTML = collaborators.map(c => `
+    list.innerHTML = collaborators.map((c, i) => `
       <li class="mb-2">
         • <a href="#" class="link-light text-decoration-underline collab-link"
-         data-inst="${c.institution}">
-         <strong>${c.name}</strong>
+             data-id="${i}">
+             <strong>${c.name}</strong>
         </a> — ${c.institution} (${c.city})
-       </li>
+      </li>
     `).join("");
 
-
-    // 6) When list item is clicked → center map and open popup
+    // 6) When list item is clicked → fly to marker and open popup
     list.addEventListener('click', e => {
       const link = e.target.closest('.collab-link');
       if (!link) return;
       e.preventDefault();
 
-      const inst = link.dataset.inst;
-      const m = markers[inst];
+      const id = link.dataset.id;
+      const m = markersById[id];
       if (!m) return;
 
       const latLng = m.getLatLng();
-
-      // Use flyTo for a smoother, more noticeable zoom & center
       map.closePopup();
       map.flyTo(latLng, 9, { animate: true, duration: 1.5 });
-    
-      // Delay popup opening until after the map finishes moving
-      setTimeout(() => {
-        m.openPopup();
-      }, 1200);
+
+      setTimeout(() => m.openPopup(), 1200);
     });
+
 
 
   </script>
