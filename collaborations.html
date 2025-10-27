@@ -201,20 +201,28 @@
       </li>
     `).join("");
 
-    // 6) When list item is clicked → zoom and open popup
+    // 6) When list item is clicked → center map and open popup
     list.addEventListener('click', e => {
       const link = e.target.closest('.collab-link');
       if (!link) return;
       e.preventDefault();
+
       const inst = link.dataset.inst;
       const m = markers[inst];
       if (!m) return;
 
-      // Smooth zoom to marker and open popup
       const latLng = m.getLatLng();
-      map.setView(latLng, 9, { animate: true });
-      m.openPopup();
+
+      // Use flyTo for a smoother, more noticeable zoom & center
+      map.closePopup();
+      map.flyTo(latLng, 9, { animate: true, duration: 1.5 });
+    
+      // Delay popup opening until after the map finishes moving
+      setTimeout(() => {
+        m.openPopup();
+      }, 1200);
     });
+
 
   </script>
 </body>
