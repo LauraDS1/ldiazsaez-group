@@ -190,16 +190,17 @@
       map.setView([20, 0], 2);
     }
 
-    // 5) Render clickable collaborator list
+    // 5) Render clickable collaborator list (Name first)
     const list = document.getElementById('collab-list');
     list.innerHTML = collaborators.map(c => `
       <li class="mb-2">
         • <a href="#" class="link-light text-decoration-underline collab-link"
-             data-inst="${c.institution}">
-             <strong>${c.institution}</strong>
-        </a> — ${c.name} (${c.city})
-      </li>
+         data-inst="${c.institution}">
+         <strong>${c.name}</strong>
+        </a> — ${c.institution} (${c.city})
+       </li>
     `).join("");
+
 
     // 6) When list item is clicked → center map and open popup
     list.addEventListener('click', e => {
