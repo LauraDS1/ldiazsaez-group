@@ -168,33 +168,54 @@
       }
     ).addTo(map);
 
-    // 3) Add markers + popups
-    const markers = [];
+        // 3) Add markers + popups
+    const markers = {};
     collaborators.forEach(c => {
-      const m = L.marker([c.lat, c.lng]).addTo(map);
-      const html = `
+      const marker = L.marker([c.lat, c.lng]).addTo(map);
+      const popupHtml = `
         <strong>${c.institution}</strong><br>
         ${c.name}<br>
         <small>${c.city}</small><br>
         ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener">Website</a>` : ""}
       `;
-      m.bindPopup(html);
-      markers.push(m);
+      marker.bindPopup(popupHtml);
+      markers[c.institution] = marker;
     });
 
     // 4) Fit map to all markers (fallback to world view if none)
-    if (markers.length) {
-      const group = L.featureGroup(markers);
+    if (Object.keys(markers).length) {
+      const group = L.featureGroup(Object.values(markers));
       map.fitBounds(group.getBounds().pad(0.2));
     } else {
       map.setView([20, 0], 2);
     }
 
-    // 5) Also render a simple list under the map (optional)
+    // 5) Render clickable collaborator list
     const list = document.getElementById('collab-list');
-    list.innerHTML = collaborators
-      .map(c => `<li class="mb-2">• <strong>${c.institution}</strong> — ${c.name} (${c.city})</li>`)
-      .join("");
+    list.innerHTML = collaborators.map(c => `
+      <li class="mb-2">
+        • <a href="#" class="link-light text-decoration-underline collab-link"
+             data-inst="${c.institution}">
+             <strong>${c.institution}</strong>
+        </a> — ${c.name} (${c.city})
+      </li>
+    `).join("");
+
+    // 6) When list item is clicked → zoom and open popup
+    list.addEventListener('click', e => {
+      const link = e.target.closest('.collab-link');
+      if (!link) return;
+      e.preventDefault();
+      const inst = link.dataset.inst;
+      const m = markers[inst];
+      if (!m) return;
+
+      // Smooth zoom to marker and open popup
+      const latLng = m.getLatLng();
+      map.setView(latLng, 9, { animate: true });
+      m.openPopup();
+    });
+
   </script>
 </body>
 </html>
