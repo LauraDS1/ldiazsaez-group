@@ -39,8 +39,6 @@ body {
   display: flex;            /* so children can stack and footer can sit at bottom */
   flex-direction: column;
 }
-/* let the main content take the available space so the footer sits at the bottom */
-main { flex: 1 0 auto; }
 
 /* If you ever want a page WITHOUT overlay, add class="no-overlay" on <body> */
 body.no-overlay .cover-container {
