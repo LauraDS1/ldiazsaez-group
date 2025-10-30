@@ -134,13 +134,7 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-.section-title {
-  border-left: 4px solid #6c757d;
-  padding-left: 12px;
-  color: #e6e6e6;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
+
 
 /* ===========================
    Footer
