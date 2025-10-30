@@ -35,7 +35,12 @@ body {
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,.25);  /* to have a transparent grid add: none  */
+  min-height: 100vh;        /* make the overlay reach the bottom of the viewport */
+  display: flex;            /* so children can stack and footer can sit at bottom */
+  flex-direction: column;
 }
+/* let the main content take the available space so the footer sits at the bottom */
+main { flex: 1 0 auto; }
 
 /* If you ever want a page WITHOUT overlay, add class="no-overlay" on <body> */
 body.no-overlay .cover-container {
