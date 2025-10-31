@@ -5,7 +5,7 @@
   --bg-overlay: rgba(0, 0, 0, 0.55);
   --text: #e9ecef;
   --text-muted: #cfcfcf;
-  --accent: #86b7fe;   /* active underline / accents */
+  --accent: #cb7743; /* #86b7fe; */  /* active underline / accents */
   --link: #bcd4ff;     /* link color on dark bg */
   --link-hover: #ffffff;
 }
