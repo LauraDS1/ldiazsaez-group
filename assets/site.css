@@ -144,6 +144,13 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
 .pub-meta { font-style: italic; }
 .pub-actions a { text-decoration: underline; }
 
+/* Left-align only the publication list */
+#pub-list,
+#pub-list ul,
+#pub-list li {
+  text-align: left;
+}
+
 /* ===========================
    People grid (headshots)
    =========================== */
