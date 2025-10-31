@@ -1,33 +1,29 @@
+
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Join Us — Laura Díaz Sáez Lab</title>
+  <title>Join us — Laura Díaz Sáez Lab</title>
 
-  <!-- Bootstrap CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
   >
+  <link rel="stylesheet" href="assets/site.css?v=1100">
 
-  <!-- Site-wide styles -->
-  <link rel="stylesheet" href="assets/site.css">
-
-  <!-- Page-specific tweaks -->
   <style>
-    .cover-container { max-width: 1100px; }
-    .content-wrap { text-align: left; } /* match collaborations page */
+    /* Fade animation for thank-you message */
+    #thankYou { opacity: 0; transition: opacity 0.8s ease-in-out; }
+    #thankYou.show { opacity: 1; }
   </style>
 </head>
 
-<body class="text-center inner-page">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body class="d-flex h-100 text-center inner-page">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
     <!-- Navigation -->
-    <header class="text-center mb-4">
+    <header class="mb-auto text-center">
       <div>
         <h3 class="mb-3">Antimicrobial Drug Discovery Lab</h3>
         <nav class="nav nav-masthead justify-content-center">
@@ -41,92 +37,259 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <main class="px-3 my-4">
-      <h1 class="display-4 text-center mb-4">Join Our Team</h1>
-      <p class="lead text-center text-white-50 mb-5">
-        We are always interested in motivated and curious scientists who share our passion for antimicrobial drug discovery.
-      </p>
+    <!-- Main content -->
+    <main class="px-3 my-auto">
+      <div class="container my-5" style="max-width: 1100px;">
+        <h1 class="display-4 text-center mb-5">Join Our Team</h1>
+
+        <p class="lead text-center mb-5">
+          We are always interested in motivated and curious scientists who share our passion for antimicrobial drug discovery.
+        </p>
+
+        <section class="mb-5">
+          <h3 class="border-start border-3 ps-3 mb-3">PhD Students</h3>
+          <p>
+            We welcome applications from students with backgrounds in microbiology, biochemistry, pharmacology, bioinformatics or related fields who wish to pursue a PhD in our lab.
+            Interested candidates are encouraged to contact <strong>Dr. Laura Díaz Sáez</strong> directly to discuss potential projects and funding opportunities.
+            Prospective PhD students could also explore national and international fellowships such as <em>FPU</em>, <em>FPI</em>, or <em>Marie Skłodowska-Curie</em> programs.
+          </p>
+        </section>
+
+        <section class="mb-5">
+          <h3 class="border-start border-3 ps-3 mb-3">Postdoctoral Researchers</h3>
+          <p>
+            We are happy to support applications from postdoctoral researchers seeking independent fellowships.
+            If you are interested in joining us, please get in touch early to plan a proposal and identify suitable funding sources (e.g., <em>Marie Curie</em>, <em>Juan de la Cierva</em>, <em>EMBO</em>).
+          </p>
+        </section>
+
+        <section class="mb-5">
+          <h3 class="border-start border-3 ps-3 mb-3">MSc and Undergraduate Students</h3>
+          <p>
+            We offer research placements for motivated MSc and undergraduate students who wish to gain hands-on experience in antimicrobial research.
+            Students can undertake thesis projects, laboratory training, or internships depending on current opportunities.
+          </p>
+        </section>
+
+        <section class="mb-5">
+          <h3 class="border-start border-3 ps-3 mb-3">How to Apply</h3>
+          <p>
+            If you are interested in joining our group, please email
+            <a href="mailto:ldiaz@iqf.csic.es" class="link-light text-decoration-underline">
+              ldiaz@iqf.csic.es
+            </a>
+            with the following:
+          </p>
+          <ul>
+            <li>Brief cover letter explaining your research interests and motivation</li>
+            <li>CV (including academic record and publications, if applicable)</li>
+          </ul>
+
+          <p class="mt-4">
+            We strive to create a supportive, inclusive, and interdisciplinary environment where every member can contribute to advancing antimicrobial drug discovery.
+          </p>
+        </section>
+
+        <!-- =========================
+             Contact & Location section
+             ========================= -->
+        <section class="mt-5">
+          <h3 class="border-start border-3 ps-3 mb-4">Contact & Find Us</h3>
+
+          <div class="row g-4 align-items-start">
+            <!-- Left column: Contact Form -->
+            <div class="col-12 col-lg-6">
+              <form id="joinForm"
+                    action="https://formspree.io/f/mqayvbeg"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="bg-body-tertiary p-4 rounded-4 shadow-sm h-100">
+                <h5 class="mb-3 text-center">Send us a message</h5>
+
+                <div class="mb-3">
+                  <label for="name" class="form-label fw-semibold">Name</label>
+                  <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label fw-semibold">Email</label>
+                  <input type="email" name="_replyto" id="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label fw-semibold">Message</label>
+                  <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+                </div>
+
+                <!-- 📎 PDF attachments -->
+                <div class="mb-3">
+                  <label for="files" class="form-label fw-semibold">Attach PDFs (CV, cover letter, etc.)</label>
+                  <input type="file"
+                         name="files"
+                         id="files"
+                         class="form-control"
+                         accept="application/pdf"
+                         multiple>
+                  <div class="form-text text-white-50">
+                    PDF only. Max total size 15&nbsp;MB.
+                  </div>
+                  <ul id="fileList" class="mt-2 mb-0 small text-white-50"></ul>
+                </div>
+
+                <div id="fileAlert" class="alert alert-danger d-none" role="alert"></div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-light btn-lg rounded-pill px-4">
+                    Send Message
+                  </button>
+                </div>
+
+                <div id="thankYou" class="alert alert-success mt-4 text-center d-none" role="alert">
+                  Thank you for your interest!
+                </div>
+              </form>
+            </div>
+
+            <!-- Right column: Address + Map -->
+            <div class="col-12 col-lg-6">
+              <div class="bg-body-tertiary p-4 rounded-4 shadow-sm h-100">
+                <h5 class="mb-3 text-center">Our Location</h5>
+                <p class="text-white-50 mb-3">
+                  Dept. of Crystallography and Structural Biology<br>
+                  Instituto de Química Física Blas Cabrera (IQF-CSIC)<br>
+                  Calle Serrano, 119 — 28006 Madrid, Spain<br>
+                  <a href="https://maps.app.goo.gl/ZrUP9i4PwVrxhC3c9" target="_blank" class="link-light text-decoration-underline">
+                    Open in Google Maps
+                  </a>
+                </p>
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.51322235501!2d-3.690256287131234!3d40.44177647131661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228e8d3337c1f%3A0xf8613232974be362!2sC.%20de%20Serrano%2C%20119%2C%20Chamart%C3%ADn%2C%2028006%20Madrid!5e0!3m2!1sen!2ses!4v1761217971188!5m2!1sen!2ses&maptype=roadmap&style=feature:all%7Celement:labels.text.fill%7Ccolor:0x999999%7Cvisibility:on&style=feature:all%7Celement:geometry%7Ccolor:0x222222%7Cvisibility:on&style=feature:poi%7Celement:geometry%7Ccolor:0x1a1a1a%7Cvisibility:on&style=feature:road%7Celement:geometry%7Ccolor:0x333333%7Cvisibility:on&style=feature:water%7Celement:geometry%7Ccolor:0x000000%7Cvisibility:on"
+                    style="border:0; filter: grayscale(100%) brightness(90%);"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ========================= -->
+      </div>
     </main>
 
-    <!-- Page Content -->
-    <section class="container content-wrap pb-5" style="max-width: 1100px;">
-
-      <h2 class="mb-3">PhD Students</h2>
-      <p>
-        We welcome applications from enthusiastic students interested in joining our lab through national or international
-        doctoral fellowship programs. Please contact us well in advance of the application deadlines to discuss potential
-        projects and funding opportunities.
-      </p>
-
-      <h2 class="mt-5 mb-3">Postdoctoral Researchers</h2>
-      <p>
-        We are keen to host postdoctoral researchers with a background in structural biology, biophysics, or chemical biology.
-        If you are considering applying for individual postdoctoral fellowships (e.g. Marie Skłodowska-Curie, Juan de la Cierva,
-        EMBO), please get in touch to explore possibilities.
-      </p>
-
-      <h2 class="mt-5 mb-3">Master’s and Undergraduate Students</h2>
-      <p>
-        We regularly supervise MSc and undergraduate research projects. If you are a student in chemistry, biochemistry, or
-        related fields and are interested in gaining experience in structural and mechanistic enzymology, contact us to
-        discuss available opportunities.
-      </p>
-
-      <h2 class="mt-5 mb-3">How to Apply</h2>
-      <p>
-        To apply for a position or discuss possible opportunities, please send an email including your CV, a brief statement
-        of research interests, and contact details of references to:
-      </p>
-
-      <p class="text-center my-4">
-        <a href="mailto:ldiaz@iqfr.csic.es" class="fw-semibold text-decoration-none text-light">
-          Contact us
-        </a>
-      </p>
-
-      <h2 class="mt-5 mb-3">Contact &amp; Find Us</h2>
-      <p>
-        Instituto de Química-Física Rocasolano (IQFR-CSIC)  
-        C/ Serrano 119, 28006 Madrid, Spain
-      </p>
-
-      <div class="ratio ratio-16x9 mt-3 shadow-sm rounded">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.445111102255!2d-3.6875428846021414!3d40.43946687936267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228f7f9d73ad1%3A0x5a2f9b6a20eae13a!2sInstituto%20de%20Qu%C3%ADmica-F%C3%ADsica%20Rocasolano%20(IQFR-CSIC)!5e0!3m2!1sen!2ses!4v1686751258053!5m2!1sen!2ses"
-          width="600"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-    </section>
-
-    <!-- Footer -->
+      <!-- Footer like the example (acknowledging Cover template) -->
     <footer class="mt-auto text-white-50">
-      <p class="mb-1">
-        Cover template for <a href="https://getbootstrap.com" target="_blank" rel="noopener">Bootstrap</a>.
-      </p>
-      <p class="mb-0">
-        <span id="year"></span> Laura Díaz Sáez Research Group
-      </p>
+      <p class="mb-1">Cover template for <a href="https://getbootstrap.com" target="_blank" rel="noopener">Bootstrap</a>.</p>
+      <p class="mb-0"> <span id="year"></span> Laura Díaz Sáez Research Group</p>
     </footer>
-
   </div>
 
-  <!-- Bootstrap JS -->
+  <!-- Bootstrap JS (optional, but small and handy) -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"
-  ></script>
 
-  <!-- Dynamic year -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ====== File selection preview + validation ======
+    const filesInput = document.getElementById('files');
+    const fileList = document.getElementById('fileList');
+    const fileAlert = document.getElementById('fileAlert');
+    const MAX_TOTAL = 15 * 1024 * 1024; // 15 MB total
+
+    function human(n) {
+      return n > 1024 * 1024
+        ? (n / (1024 * 1024)).toFixed(1) + ' MB'
+        : (n / 1024).toFixed(0) + ' KB';
+    }
+
+    if (filesInput) {
+      filesInput.addEventListener('change', () => {
+        fileAlert.classList.add('d-none');
+        fileAlert.textContent = '';
+        fileList.innerHTML = '';
+
+        const files = Array.from(filesInput.files || []);
+        if (!files.length) return;
+
+        let total = 0;
+        const bad = [];
+
+        files.forEach(f => {
+          total += f.size;
+          if (f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
+            bad.push(f.name);
+          }
+          const li = document.createElement('li');
+          li.textContent = `${f.name} (${human(f.size)})`;
+          fileList.appendChild(li);
+        });
+
+        if (bad.length) {
+          fileAlert.textContent = `Only PDF files allowed. Remove: ${bad.join(', ')}`;
+          fileAlert.classList.remove('d-none');
+        } else if (total > MAX_TOTAL) {
+          fileAlert.textContent = `Total size ${human(total)} exceeds the 15 MB limit.`;
+          fileAlert.classList.remove('d-none');
+        }
+      });
+    }
+
+    // ====== Submit handling (Formspree) ======
+    const form = document.getElementById('joinForm');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate again before submit
+      const files = Array.from(filesInput.files || []);
+      let total = files.reduce((s, f) => s + f.size, 0);
+      const hasNonPdf = files.some(f => f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf'));
+
+      if (hasNonPdf) {
+        fileAlert.textContent = 'Only PDF files are allowed.';
+        fileAlert.classList.remove('d-none');
+        return;
+      }
+      if (total > MAX_TOTAL) {
+        fileAlert.textContent = `Total size ${human(total)} exceeds the 15 MB limit.`;
+        fileAlert.classList.remove('d-none');
+        return;
+      }
+      fileAlert.classList.add('d-none');
+
+      const formData = new FormData(form); // includes files automatically
+
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        fileList.innerHTML = '';
+        thankYou.textContent = 'Thank you for your interest!';
+        thankYou.classList.remove('d-none');
+        thankYou.classList.add('show');
+        setTimeout(() => {
+          thankYou.classList.remove('show');
+          setTimeout(() => thankYou.classList.add('d-none'), 800);
+        }, 5000);
+      } else {
+        thankYou.classList.remove('alert-success');
+        thankYou.classList.add('alert-danger');
+        thankYou.textContent = 'Oops! Something went wrong. Please try again later.';
+        thankYou.classList.remove('d-none');
+        thankYou.classList.add('show');
+      }
+    });
   </script>
 </body>
 </html>
