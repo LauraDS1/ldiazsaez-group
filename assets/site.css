@@ -46,7 +46,10 @@ body.no-overlay .cover-container {
   box-shadow: none;
 }
 
-
+/* For inner pages, shift content downward so titles line up */
+.inner-page main {
+  margin-top: 4rem;  /* adjust as needed */
+}
 
 
 /* ===========================
