@@ -127,8 +127,8 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
 .year-title {
   margin-top: 2rem;
   margin-bottom: .75rem;
-  border-left: 4px solid #6c757d;
-  padding-left: 10px;
+  border-left: none /* 4px solid #6c757d;
+  padding-left: 0 /* 10px;
   color: #e0e0e0;
 }
 .pub-list ul,
@@ -170,14 +170,13 @@ footer a:hover { color: var(--link-hover); }
 }
 
 
-/* Left-align only the publication list */
-#pub-list,
-#pub-list ul,
-#pub-list li {
+/* Left-align ONLY the publications list (works whether you use #pub-list or .pub-list) */
+#pub-list, #pub-list ul, #pub-list li,
+.pub-list, .pub-list ul, .pub-list li {
   text-align: left;
 }
 
-.year-title {
-  border-left: none !important;
-  padding-left: 0;
+/* Left-align the content block AFTER the hero title on inner pages like Join */
+.content-wrap { 
+  text-align: left;
 }
