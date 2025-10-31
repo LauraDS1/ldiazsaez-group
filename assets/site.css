@@ -51,6 +51,16 @@ body.no-overlay .cover-container {
   margin-top: 4rem;  /* adjust as needed */
 }
 
+/* Non-home pages: consistent top start for titles */
+.inner-page header { margin-bottom: 1.75rem !important; }  /* fixed spacing under navbar */
+.inner-page main   { padding-top: 1.5rem; padding-bottom: 2rem; }
+
+/* Remove extra top margin that varies by heading size */
+.inner-page h1, .inner-page .display-1, .inner-page .display-2, 
+.inner-page .display-3, .inner-page .display-4 {
+  margin-top: 0;
+}
+
 
 /* ===========================
    Typography
