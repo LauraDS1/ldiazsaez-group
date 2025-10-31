@@ -6,7 +6,7 @@
   --text: #e9ecef;
   --text-muted: #cfcfcf;
   --accent: #cb7743; /* #86b7fe; */  /* active underline / accents */
-  --link: #bcd4ff;     /* link color on dark bg */
+  --link: #cb7743; /* #bcd4ff;  */   /* link color on dark bg */
   --link-hover: #ffffff;
 }
 
