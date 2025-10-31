@@ -64,6 +64,22 @@ body.no-overlay .cover-container {
   margin-top: 0;
 }
 
+/* Full-page dark veil for all inner pages (NOT the home) */
+.inner-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);  /* same darkness as --bg-overlay */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Make the content stack above the veil */
+.inner-page .cover-container {
+  position: relative;
+  z-index: 1;
+  background: transparent; /* keep the box clear if you don't want double tint */
+}
 
 /* ===========================
    Typography
