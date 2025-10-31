@@ -45,7 +45,7 @@ body {
 
 /* Main should expand naturally */
 .cover-container main {
-  flex: 1 0 auto;
+  flex-grow: 1;
 }
 
 /* For inner pages, shift content downward so titles line up */
