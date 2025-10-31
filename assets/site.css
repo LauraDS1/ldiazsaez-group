@@ -127,8 +127,8 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
 .year-title {
   margin-top: 2rem;
   margin-bottom: .75rem;
-  border-left: none /* 4px solid #6c757d;
-  padding-left: 0 /* 10px;
+  border-left: none /* 4px solid #6c757d; */
+  padding-left: 0 /* 10px; */
   color: #e0e0e0;
 }
 .pub-list ul,
@@ -184,6 +184,10 @@ footer a:hover { color: var(--link-hover); }
   h1.display-4 { font-size: 2.25rem; }
 }
 
+
+/* ===========================
+   Forcing correct formant in publications
+   =========================== */
 
 /* Left-align ONLY the publications list (works whether you use #pub-list or .pub-list) */
 #pub-list, #pub-list ul, #pub-list li,
