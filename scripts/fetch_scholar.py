@@ -157,12 +157,13 @@ def fetch_crossref_by_orcid(orcid: str) -> List[Dict[str, Any]]:
 # --------------------------- ORCID public API --------------------------------
 def fetch_orcid_public(orcid: str) -> List[Dict[str, Any]]:
     print(f"→ ORCID public API (fallback) ORCID={orcid}")
-    url = f"https://pub.orcid.org/v3.0/{orcid}/works"
+    base = f"https://pub.orcid.org/v3.0/{orcid}"
     headers = {"Accept": "application/json", **UA}
     items: List[Dict[str, Any]] = []
 
+    # 1) Get summaries (no authors here)
     try:
-        r = requests.get(url, headers=headers, timeout=60)
+        r = requests.get(f"{base}/works", headers=headers, timeout=60)
         r.raise_for_status()
         data = r.json()
     except Exception as e:
@@ -173,13 +174,15 @@ def fetch_orcid_public(orcid: str) -> List[Dict[str, Any]]:
     for g in groups:
         summaries = g.get("work-summary") or []
         for ws in summaries:
+            # basic fields from summary (may be overridden by detail)
             title_obj = (ws.get("title") or {})
             title = (title_obj.get("title") or {}).get("value") or "Untitled"
+
             journal_title = (ws.get("journal-title") or {}).get("value") or ""
             pub_date = ws.get("publication-date") or {}
             year = ""
-            if "year" in pub_date and pub_date["year"] and pub_date["year"].get("value"):
-                year = pub_date["year"]["value"]
+            if (y := pub_date.get("year")) and y.get("value"):
+                year = y["value"]
 
             doi = ""
             exids = (ws.get("external-ids") or {}).get("external-id") or []
@@ -188,10 +191,51 @@ def fetch_orcid_public(orcid: str) -> List[Dict[str, Any]]:
                     doi = str(ex.get("external-id-value", "")).lower().strip()
                     break
 
+            # 2) Fetch the full work to get contributors/authors
+            put_code = ws.get("put-code")
+            authors_str = ""
+            try:
+                if put_code is not None:
+                    r2 = requests.get(f"{base}/work/{put_code}", headers=headers, timeout=60)
+                    r2.raise_for_status()
+                    full = r2.json()
+
+                    # authors from contributors
+                    contributors = (full.get("contributors") or {}).get("contributor") or []
+                    names = []
+                    for c in contributors:
+                        name = (c.get("credit-name") or {}).get("value") or c.get("contributor-name") or ""
+                        name = str(name).strip()
+                        if name:
+                            names.append(name)
+                    authors_str = ", ".join(names)
+
+                    # improve venue/year/doi if missing in summary
+                    if not journal_title:
+                        j = (full.get("journal-title") or {}).get("value")
+                        if j:
+                            journal_title = j
+                    if not year:
+                        pd = full.get("publication-date") or {}
+                        if (y := pd.get("year")) and y.get("value"):
+                            year = y["value"]
+                    if not doi:
+                        exids_full = (full.get("external-ids") or {}).get("external-id") or []
+                        for ex in exids_full:
+                            if str(ex.get("external-id-type", "")).lower() == "doi":
+                                doi = str(ex.get("external-id-value", "")).lower().strip()
+                                break
+
+                    # be polite to the public API
+                    time.sleep(0.2)
+            except Exception as e:
+                # if detail fetch fails, continue with summary-only data
+                print(f"    ! ORCID work {put_code} detail error: {e}", file=sys.stderr)
+
             items.append(
                 {
                     "title": title,
-                    "authors": "",
+                    "authors": authors_str,  # now filled if available
                     "year": year,
                     "venue": journal_title,
                     "url": f"https://doi.org/{doi}" if doi else "",
