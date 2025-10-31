@@ -49,21 +49,27 @@ body {
    Home Page (no overlay, centered hero)
    =========================== */
 body.home {
+  min-height: 100vh;
   display: flex;
-  align-items: center;         /* vertical center */
-  justify-content: center;     /* horizontal center */
-  min-height: 100vh;           /* make sure body fills the screen */
-  text-align: center;
+  flex-direction: column;
 }
 
 body.home .cover-container {
-  background: transparent;     /* remove overlay */
-  box-shadow: none;            /* remove shadow */
-  min-height: 100vh;           /* ensure full viewport height */
+  background: transparent;
+  box-shadow: none;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* header at top, footer at bottom */
 }
 
 body.home main {
-  margin-block: auto;          /* vertically center main */
+  flex-grow: 1;                /* take up available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* center vertically between header/footer */
+  align-items: center;         /* center horizontally */
+  text-align: center;
 }
 
 /* ===========================
