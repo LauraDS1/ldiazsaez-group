@@ -102,12 +102,12 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
    Buttons
    =========================== */
 .btn-primary {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #cb7743; /* #0d6efd; */
+  border-color: #cb7743; /* #0d6efd; */
 }
 .btn-primary:hover {
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+  background-color: #cb7743; /* #0b5ed7; */
+  border-color: #cb7743; /* #0a58ca; */
 }
 
 /* ===========================
