@@ -144,13 +144,6 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
 .pub-meta { font-style: italic; }
 .pub-actions a { text-decoration: underline; }
 
-/* Left-align only the publication list */
-#pub-list,
-#pub-list ul,
-#pub-list li {
-  text-align: left;
-}
-
 /* ===========================
    People grid (headshots)
    =========================== */
@@ -174,4 +167,17 @@ footer a:hover { color: var(--link-hover); }
 @media (max-width: 576px) {
   .cover-container { padding: 1.25rem; }
   h1.display-4 { font-size: 2.25rem; }
+}
+
+
+/* Left-align only the publication list */
+#pub-list,
+#pub-list ul,
+#pub-list li {
+  text-align: left;
+}
+
+.year-title {
+  border-left: none !important;
+  padding-left: 0;
 }
