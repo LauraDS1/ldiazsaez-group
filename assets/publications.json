@@ -21,13 +21,13 @@
   },
   {
     "title": "Discovery of PFI-6, a small-molecule chemical probe for the YEATS domain of MLLT1 and MLLT3",
-    "authors": "Brigitt Raux, Karly A. Buchan, James Bennett, Thomas Christott, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Vicki Gamble, Carina Gileadi, Charline Giroud, Kilian V.M. Huber, Magdalena Korczynska, Chris Limberakis, Arjun Narayanan, Dafydd R. Owen, Laura Díaz Sáez, Ingrid A. Stock, Allyn T. Londregan",
-    "year": 2024,
+    "authors": "",
+    "year": "2024",
     "venue": "Bioorganic &amp; Medicinal Chemistry Letters",
-    "url": "https://api.elsevier.com/content/article/PII:S0960894X23004249?httpAccept=text/xml",
-    "eprint_url": "https://api.elsevier.com/content/article/PII:S0960894X23004249?httpAccept=text/xml",
-    "cited_by": 6,
-    "source": "crossref_orcid"
+    "url": "https://doi.org/10.1016/j.bmcl.2023.129546",
+    "eprint_url": "",
+    "cited_by": 0,
+    "source": "orcid_public"
   },
   {
     "title": "Fragment Screening Reveals Starting Points for Rational Design of Galactokinase 1 Inhibitors to Treat Classic Galactosemia.",
