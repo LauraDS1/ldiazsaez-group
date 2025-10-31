@@ -120,16 +120,27 @@ def fetch_crossref_by_orcid(orcid: str) -> List[Dict[str, Any]]:
                     author_names.append(nm)
             authors_str = ", ".join(author_names)
 
+            # Extract author names (ORCID calls them "contributors")
+            authors_str = ""
+            contributors = (ws.get("contributors") or {}).get("contributor") or []
+            if contributors:
+                names = []
+                for c in contributors:
+                    name = (c.get("credit-name") or {}).get("value") or c.get("contributor-name") or ""
+                    if name:
+                        names.append(name)
+                authors_str = ", ".join(names)
+  
             items.append(
                 {
-                    "title": title or "Untitled",
+                    "title": title,
                     "authors": authors_str,
                     "year": year,
-                    "venue": venue,
-                    "url": oa_url or url_pref or (f"https://doi.org/{doi}" if doi else ""),
-                    "eprint_url": oa_url,
-                    "cited_by": cited_by,
-                    "source": "crossref_orcid",
+                    "venue": journal_title,
+                    "url": f"https://doi.org/{doi}" if doi else "",
+                    "eprint_url": "",
+                    "cited_by": 0,
+                    "source": "orcid_public",
                     "doi": doi,
                 }
             )
