@@ -48,6 +48,12 @@ body {
   flex-grow: 1;
 }
 
+/* Put this AFTER the base .cover-container rule */
+body.no-overlay .cover-container {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* For inner pages, shift content downward so titles line up */
 .inner-page main {
   margin-top: 4rem;  /* adjust as needed */
