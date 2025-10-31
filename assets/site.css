@@ -17,7 +17,7 @@ body {
  min-height: 100vh; /* ocupa toda la altura de la ventana */
  background-image:
     linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
-    url('./Intro5.png');
+    url('./Intro6.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
