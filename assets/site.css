@@ -30,50 +30,64 @@ body {
 }
 
 
-/* Outer wrapper used by all pages (your layout) */
+/* ===========================
+   Layout Wrappers (home vs inner pages)
+   =========================== */
+
+/* Base setup — shared by all pages */
 .cover-container {
-  max-width: 1100px;           /* keep your original width for the “cover” pages */
-  background-color: var(--bg-overlay);         /* to have a transparent grid add: transparent */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;             /* center horizontally */
   border-radius: 10px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);  /* to have a transparent grid add: none  */
-  min-height: 100dvh; /* 100vh; */        /* make the overlay reach the bottom of the viewport */
-  height: auto;
-  display: flex;            /*  can stack and footer can sit at bottom */
+  display: flex;
   flex-direction: column;
 }
 
-/* Main should expand naturally */
-.cover-container main {
-  flex-grow: 1;
+/* ===========================
+   Home Page (no overlay, centered hero)
+   =========================== */
+body.home {
+  display: flex;
+  align-items: center;         /* vertical center */
+  justify-content: center;     /* horizontal center */
+  min-height: 100vh;           /* make sure body fills the screen */
+  text-align: center;
 }
 
-/* Put this AFTER the base .cover-container rule */
-body.no-overlay .cover-container {
-  background: transparent !important;
-  box-shadow: none !important;
+body.home .cover-container {
+  background: transparent;     /* remove overlay */
+  box-shadow: none;            /* remove shadow */
+  min-height: 100vh;           /* ensure full viewport height */
 }
 
-/* For inner pages, shift content downward so titles line up */
-.inner-page main {
-  margin-top: 4rem;  /* adjust as needed */
+body.home main {
+  margin-block: auto;          /* vertically center main */
 }
 
-/* Non-home pages: consistent top start for titles */
-.inner-page header { margin-bottom: 1.75rem !important; }  /* fixed spacing under navbar */
-.inner-page main   { padding-top: 1.5rem; padding-bottom: 2rem; }
+/* ===========================
+   Inner Pages (overlay layout)
+   =========================== */
+body.inner-page .cover-container {
+  background-color: var(--bg-overlay);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  min-height: 100dvh;          /* overlay extends even on short pages */
+}
 
-/* Remove extra top margin that varies by heading size */
-.inner-page h1, .inner-page .display-1, .inner-page .display-2, 
-.inner-page .display-3, .inner-page .display-4 {
+body.inner-page header { margin-bottom: 1.5rem !important; }
+body.inner-page main {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+body.inner-page h1,
+body.inner-page .display-1,
+body.inner-page .display-2,
+body.inner-page .display-3,
+body.inner-page .display-4 {
   margin-top: 0;
 }
-
-/* Defeat Bootstrap's h-100 so the wrapper can grow with content */
-.cover-container.h-100 { height: auto !important; }
-
-/* Keep the nice short-page behavior */
-.cover-container { min-height: 100dvh; }   /* or 100vh if you prefer */
 
 /* ===========================
    Typography
