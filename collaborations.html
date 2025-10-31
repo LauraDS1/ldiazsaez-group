@@ -186,7 +186,13 @@
       // 3) Add markers + popups (keyed by unique id)
     const markersById = {};
     collaborators.forEach((c, i) => {
-      const marker = L.marker([c.lat, c.lng]).addTo(map);
+      const marker = L.circleMarker([c.lat, c.lng], {
+        radius: 8,                // size of circle
+        color: "#cb7743",         // outline color
+        fillColor: "#cb7743",     // fill color
+        fillOpacity: 0.9,         // opacity (1 = solid)
+        weight: 2                 // outline thickness
+      }).addTo(map);
       const popupHtml = `
         <strong>${c.institution}</strong><br>
         ${c.name}<br>
@@ -194,7 +200,7 @@
         ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener">Website</a>` : ""}
       `;
       marker.bindPopup(popupHtml);
-      markersById[i] = marker;          // ✅ key by index, not institution
+      markersById[i] = marker;          // key by index, not institution
     });
 
     // 4) Fit map to all markers (fallback to world view if none)
