@@ -164,10 +164,21 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
   margin-top: 2rem;
 }
 
+/* Join page: left-align content and remove the left bar on section headings */
+#join-page,
 #join-page p,
-#join-page ul {
-  text-align: left;        /* Left-align paragraphs and lists */
+#join-page ul,
+#join-page li {
+  text-align: left;
 }
+
+#join-page h3 {
+  text-align: left;
+}
+
+/* Kill the Bootstrap utility border/padding added on Join h3s */
+#join-page .border-start { border-left: 0 !important; }
+#join-page .ps-3        { padding-left: 0 !important; }
 
 /* ===========================
    Footer
