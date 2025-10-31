@@ -154,6 +154,15 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
   border-top-right-radius: 1rem;
 }
 
+/* Left-align section titles on the People page */
+#people-page h2.section-title {
+  text-align: left;
+  border-left: none;
+  padding-left: 0;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
 /* ===========================
    Join Us page tweaks
    =========================== */
