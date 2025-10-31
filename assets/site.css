@@ -35,7 +35,7 @@ body {
   border-radius: 10px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,.25);  /* to have a transparent grid add: none  */
-  min-height: 100vh;        /* make the overlay reach the bottom of the viewport */
+  min-height: auto; /* 100vh; */        /* make the overlay reach the bottom of the viewport */
   display: flex;            /*  can stack and footer can sit at bottom */
   flex-direction: column;
 }
