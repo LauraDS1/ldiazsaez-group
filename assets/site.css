@@ -39,9 +39,6 @@ body {
   display: flex;            /*  can stack and footer can sit at bottom */
   flex-direction: column;
 }
-.cover-container main {
-  flex: 1 0 auto;   /* let main expand, not float in the middle */
-}
 
 /* If you ever want a page WITHOUT overlay, add class="no-overlay" on <body> */
 body.no-overlay .cover-container {
