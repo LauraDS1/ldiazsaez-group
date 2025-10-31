@@ -57,6 +57,11 @@ display: flex;            /*  can stack and footer can sit at bottom */
   margin-top: 0;
 }
 
+/* Defeat Bootstrap's h-100 so the wrapper can grow with content */
+.cover-container.h-100 { height: auto !important; }
+
+/* Keep the nice short-page behavior */
+.cover-container { min-height: 100dvh; }   /* or 100vh if you prefer */
 
 /* ===========================
    Typography
