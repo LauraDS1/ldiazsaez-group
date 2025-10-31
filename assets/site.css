@@ -44,6 +44,10 @@ body {
   flex-direction: column;
 }
 
+/* Main should expand naturally */
+.cover-container main {
+  flex: 1 0 auto;
+}
 
 /* For inner pages, shift content downward so titles line up */
 .inner-page main {
