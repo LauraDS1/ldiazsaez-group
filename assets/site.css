@@ -162,7 +162,6 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
   border-left: none;       /* Remove the grey line */
   padding-left: 0;         /* Remove spacing from line */
   margin-top: 2rem;
-  color: #e9ecef;          /* Keep consistent color */
 }
 
 #join-page p,
