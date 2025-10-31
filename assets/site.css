@@ -154,6 +154,21 @@ a:hover, .link-row a:hover { color: var(--link-hover); text-decoration: underlin
   border-top-right-radius: 1rem;
 }
 
+/* ===========================
+   Join Us page tweaks
+   =========================== */
+#join-page h3 {
+  text-align: left;        /* Left-align section titles */
+  border-left: none;       /* Remove the grey line */
+  padding-left: 0;         /* Remove spacing from line */
+  margin-top: 2rem;
+  color: #e9ecef;          /* Keep consistent color */
+}
+
+#join-page p,
+#join-page ul {
+  text-align: left;        /* Left-align paragraphs and lists */
+}
 
 /* ===========================
    Footer
