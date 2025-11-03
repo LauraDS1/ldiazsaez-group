@@ -173,10 +173,16 @@
     ];
 
     // 2) Create map (dark tiles to match your theme)
+    const WORLD_BOUNDS = L.latLngBounds(
+      [-85.05112878, -180],
+      [ 85.05112878,  180]
+    );
+    
     const map = L.map('map', {
       worldCopyJump: false,
-      maxBounds: [[-85, -180], [85, 180]],  // World bounds
+      maxBounds: WORLD_BOUNDS,  // World bounds
       maxBoundsViscosity: 1.0               // Prevent dragging outside
+      zoomSnap: 0.25               // allow fractional zoom for a perfect fit
     });
     
     const tiles = L.tileLayer(
@@ -189,11 +195,12 @@
       }
     ).addTo(map);
 
-    // Compute zoom level where one full world fits in the container
-    const worldBounds = L.latLngBounds([[-85, -180], [85, 180]]);
-    const oneWorldZoom = map.getBoundsZoom(worldBounds, true);
-    // Prevent zooming out beyond one full world
+    // Compute the zoom where a single world exactly fits the container
+    const oneWorldZoom = map.getBoundsZoom(WORLD_BOUNDS, true);
     map.setMinZoom(oneWorldZoom);
+
+    // Optional: start by showing the entire world once
+    map.setView([20, 0], oneWorldZoom);
 
       // 3) Add markers + popups (keyed by unique id)
     const markersById = {};
