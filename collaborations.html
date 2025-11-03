@@ -175,7 +175,7 @@
     // 2) Create map (dark tiles to match your theme)
     const map = L.map('map', {
       worldCopyJump: false,
-      maxBounds: [[-90, -180], [90, 180]],  // World bounds
+      maxBounds: [[-85, -180], [85, 180]],  // World bounds
       maxBoundsViscosity: 1.0               // Prevent dragging outside
     });
     
@@ -184,9 +184,16 @@
       {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap &copy; CARTO',
-        subdomains: 'abcd'
+        subdomains: 'abcd',
+        noWrap: true
       }
     ).addTo(map);
+
+    // Compute zoom level where one full world fits in the container
+    const worldBounds = L.latLngBounds([[-85, -180], [85, 180]]);
+    const oneWorldZoom = map.getBoundsZoom(worldBounds, true);
+    // Prevent zooming out beyond one full world
+    map.setMinZoom(oneWorldZoom);
 
       // 3) Add markers + popups (keyed by unique id)
     const markersById = {};
