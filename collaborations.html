@@ -173,7 +173,12 @@
     ];
 
     // 2) Create map (dark tiles to match your theme)
-    const map = L.map('map', { worldCopyJump: true });
+    const map = L.map('map', {
+      worldCopyJump: false,
+      maxBounds: [[-90, -180], [90, 180]],  // World bounds
+      maxBoundsViscosity: 1.0               // Prevent dragging outside
+    });
+    
     const tiles = L.tileLayer(
       'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
       {
