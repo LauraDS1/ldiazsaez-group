@@ -10,7 +10,7 @@
     "source": "openalex"
   },
   {
-    "title": "Phenomics‐based Discovery of Novel Orthosteric Choline Kinase Inhibitors",
+    "title": "Phenomics‐Based Discovery of Novel Orthosteric Choline Kinase Inhibitors",
     "authors": "Ludwig G. Bauer, Jennifer Ward, L. Diaz Saez, Yvonne Sundström, Tuomas Tolvanen, Juan Carlos Alarcón Barrera, Sarantos Kostidis, Catherine Rogers, Ioanna Panagakou, Usha Singh, Elisabeth M. Rothweiler, Alejandro Gonzalez Orta, H. Ümit Kanıskan, Jianping Hu, Jian Jin, Sonja Sievers, Herbert Waldmann, Martin Giera, Michael Sundström, Louise Berg, K. Huber",
     "year": 2024,
     "venue": "Angewandte Chemie International Edition",
@@ -21,23 +21,23 @@
   },
   {
     "title": "Discovery of PFI-6, a small-molecule chemical probe for the YEATS domain of MLLT1 and MLLT3",
-    "authors": "Brigitt Raux, Karly Buchan, James M. Bennett, Thomas Christott, Matthew Dowling, Gillian Farnie, Oleg Fedorov, Vicki Gamble, C. Gileadi, Charline Giroud, K. Huber, Magdalena Korczynska, Chris Limberakis, Arjun Narayanan, Dafydd R. Owen, L. Diaz Saez, Ingrid A. Stock, Allyn T. Londregan",
-    "year": 2023,
+    "authors": "Brigitt Raux, Karly A. Buchan, James Bennett, Thomas Christott, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Vicki Gamble, Carina Gileadi, Charline Giroud, Kilian V.M. Huber, Magdalena Korczynska, Chris Limberakis, Arjun Narayanan, Dafydd R. Owen, Laura Díaz Sáez, Ingrid A. Stock, Allyn T. Londregan",
+    "year": "2024",
     "venue": "Bioorganic &amp; Medicinal Chemistry Letters",
     "url": "https://doi.org/10.1016/j.bmcl.2023.129546",
-    "eprint_url": "https://doi.org/10.1016/j.bmcl.2023.129546",
-    "cited_by": 6,
-    "source": "openalex"
+    "eprint_url": "https://api.elsevier.com/content/article/PII:S0960894X23004249?httpAccept=text/xml",
+    "cited_by": 7,
+    "source": "crossref"
   },
   {
     "title": "Discovery of High-Affinity Small-Molecule Binders of the Epigenetic Reader YEATS4",
-    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James M. Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, C. Gileadi, Charline Giroud, Michael Harris, Brett D. Hollingshead, K. Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, L. Diaz Saez, Ingrid A. Stock, Benjamin A. Thuma, Andy S. Tsai, Alison E. Varghese",
-    "year": 2022,
+    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, Carina Gileadi, Charline Giroud, Michael R. Harris, Brett D. Hollingshead, Kilian Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, Laura Díaz Sáez, Ingrid A. Stock, Benjamin A. Thuma, Andy Tsai, Alison E. Varghese",
+    "year": "2022",
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
-    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
-    "cited_by": 18,
-    "source": "openalex"
+    "eprint_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.2c01421",
+    "cited_by": 19,
+    "source": "crossref"
   },
   {
     "title": "Fragment Screening Reveals Starting Points for Rational Design of Galactokinase 1 Inhibitors to Treat Classic Galactosemia",
@@ -46,7 +46,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.0c00498",
     "eprint_url": "https://doi.org/10.1021/acschembio.0c00498",
-    "cited_by": 12,
+    "cited_by": 13,
     "source": "openalex"
   },
   {
@@ -56,7 +56,7 @@
     "venue": "British Journal of Haematology",
     "url": "https://doi.org/10.1111/bjh.17227",
     "eprint_url": "https://doi.org/10.1111/bjh.17227",
-    "cited_by": 6,
+    "cited_by": 7,
     "source": "openalex"
   },
   {
@@ -81,13 +81,13 @@
   },
   {
     "title": "Demonstration of the utility of DOS-derived fragment libraries for rapid hit derivatisation in a multidirectional fashion",
-    "authors": "Sarah L. Kidd, Elaine Fowler, Till Reinhardt, Thomas Compton, Natalia Mateu, Hector Newman, Dom Bellini, R. Talon, Joseph McLoughlin, T. Krojer, A. Aimon, A.R. Bradley, M. Fairhead, P. Brear, L. Diaz Saez, Katherine McAuley, Hannah F. Sore, Andrew Madin, Daniel H. O’Donovan, K. Huber, Marko Hyvönen, F. von Delft, Christopher G. Dowson, David R. Spring",
-    "year": 2020,
+    "authors": "Sarah L. Kidd, Elaine Fowler, Till Reinhardt, Thomas Compton, Natalia Mateu, Hector Newman, Dom Bellini, Romain Talon, Joseph McLoughlin, Tobias Krojer, Anthony Aimon, Anthony Bradley, Michael Fairhead, Paul Brear, Laura Díaz-Sáez, Katherine McAuley, Hannah F. Sore, Andrew Madin, Daniel H. O'Donovan, Kilian V. M. Huber, Marko Hyvönen, Frank von Delft, Christopher G. Dowson, David R. Spring",
+    "year": "2020",
     "venue": "Chemical Science",
     "url": "https://doi.org/10.1039/d0sc01232g",
-    "eprint_url": "https://doi.org/10.1039/d0sc01232g",
+    "eprint_url": "http://pubs.rsc.org/en/content/articlepdf/2020/SC/D0SC01232G",
     "cited_by": 21,
-    "source": "openalex"
+    "source": "crossref"
   },
   {
     "title": "Deliberately Losing Control of C−H Activation Processes in the Design of Small‐Molecule‐Fragment Arrays Targeting Peroxisomal Metabolism",
@@ -96,7 +96,7 @@
     "venue": "ChemMedChem",
     "url": "https://doi.org/10.1002/cmdc.202000543",
     "eprint_url": "https://doi.org/10.1002/cmdc.202000543",
-    "cited_by": 5,
+    "cited_by": 6,
     "source": "openalex"
   },
   {
@@ -106,7 +106,7 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 51,
+    "cited_by": 54,
     "source": "openalex"
   },
   {
@@ -129,7 +129,7 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 300,
+    "cited_by": 312,
     "source": "openalex"
   },
   {
@@ -139,7 +139,7 @@
     "venue": "The FEBS Journal",
     "url": "https://doi.org/10.1111/febs.14976",
     "eprint_url": "https://doi.org/10.1111/febs.14976",
-    "cited_by": 7,
+    "cited_by": 8,
     "source": "openalex"
   },
   {
@@ -149,18 +149,18 @@
     "venue": "Angewandte Chemie International Edition",
     "url": "https://doi.org/10.1002/anie.201810617",
     "eprint_url": "https://doi.org/10.1002/anie.201810617",
-    "cited_by": 85,
+    "cited_by": 91,
     "source": "openalex"
   },
   {
     "title": "Creation of a Novel Class of Potent and Selective MutT Homologue 1 (MTH1) Inhibitors Using Fragment-Based Screening and Structure-Based Drug Design",
-    "authors": "Fredrik Rahm, Jenny Viklund, L. Tresaugues, Manuel Ellermann, Anja Giese, U.B. Ericsson, Rickard Forsblom, Tobias Ginman, Judith Günther, Kenth Hallberg, Johan Lindström, Lars Boukharta Persson, Camilla Silvander, Antoine Talagas, L. Diaz Saez, Oleg Fedorov, K. Huber, Ioanna Panagakou, Paulina Siejka, Mátyás Gorjánácz, Marcus Bauser, Martin Andersson",
-    "year": 2018,
+    "authors": "Fredrik Rahm, Jenny Viklund, Lionel Trésaugues, Manuel Ellermann, Anja Giese, Ulrika Ericsson, Rickard Forsblom, Tobias Ginman, Judith Günther, Kenth Hallberg, Johan Lindström, Lars Boukharta Persson, Camilla Silvander, Antoine Talagas, Laura Díaz-Sáez, Oleg Fedorov, Kilian V. M. Huber, Ioanna Panagakou, Paulina Siejka, Mátyás Gorjánácz, Marcus Bauser, Martin Andersson",
+    "year": "2018",
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b01884",
-    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b01884",
-    "cited_by": 33,
-    "source": "openalex"
+    "eprint_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.7b01884",
+    "cited_by": 31,
+    "source": "crossref"
   },
   {
     "title": "Isoform-Selective ATAD2 Chemical Probe with Novel Chemical Structure and Unusual Mode of Action",
@@ -169,18 +169,18 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 84,
+    "cited_by": 85,
     "source": "openalex"
   },
   {
     "title": "Benzoisoquinolinediones as Potent and Selective Inhibitors of BRPF2 and TAF1/TAF1L Bromodomains",
-    "authors": "Léa Bouché, Clara D. Christ, Stephan Siegel, Amaury E. Fernández‐Montalván, Simon J. Holton, Oleg Fedorov, Antonius ter Laak, Tatsuo Sugawara, Detlef Stöckigt, C. Tallant, James M. Bennett, Octovia Monteiro, L. Diaz Saez, Paulina Siejka, Julia Meier, Vera Pütter, Jörg Weiske, Susanne Müller, K. Huber, Ingo V. Hartung, Bernard Haendler",
-    "year": 2017,
+    "authors": "Léa Bouché, Clara D. Christ, Stephan Siegel, Amaury E. Fernández-Montalván, Simon J. Holton, Oleg Fedorov, Antonius ter Laak, Tatsuo Sugawara, Detlef Stöckigt, Cynthia Tallant, James Bennett, Octovia Monteiro, Laura Díaz-Sáez, Paulina Siejka, Julia Meier, Vera Pütter, Jörg Weiske, Susanne Müller, Kilian V. M. Huber, Ingo V. Hartung, Bernard Haendler",
+    "year": "2017",
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 64,
-    "source": "openalex"
+    "eprint_url": "http://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.7b00306",
+    "cited_by": 62,
+    "source": "crossref"
   },
   {
     "title": "Open and compressed conformations of <i>Francisella tularensis</i> ClpP",
@@ -189,7 +189,7 @@
     "venue": "Proteins: Structure, Function, and Bioinformatics",
     "url": "https://doi.org/10.1002/prot.25197",
     "eprint_url": "https://doi.org/10.1002/prot.25197",
-    "cited_by": 12,
+    "cited_by": 13,
     "source": "openalex"
   },
   {
