@@ -31,13 +31,13 @@
   },
   {
     "title": "Discovery of High-Affinity Small-Molecule Binders of the Epigenetic Reader YEATS4",
-    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, Carina Gileadi, Charline Giroud, Michael R. Harris, Brett D. Hollingshead, Kilian Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, Laura Díaz Sáez, Ingrid A. Stock, Benjamin A. Thuma, Andy Tsai, Alison E. Varghese",
-    "year": "2022",
+    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James M. Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, C. Gileadi, Charline Giroud, Michael Harris, Brett D. Hollingshead, K. Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, L. Diaz Saez, Ingrid A. Stock, Benjamin A. Thuma, Andy S. Tsai, Alison E. Varghese",
+    "year": 2022,
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
-    "eprint_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.2c01421",
+    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
     "cited_by": 19,
-    "source": "crossref"
+    "source": "openalex"
   },
   {
     "title": "Fragment Screening Reveals Starting Points for Rational Design of Galactokinase 1 Inhibitors to Treat Classic Galactosemia",
@@ -46,12 +46,12 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.0c00498",
     "eprint_url": "https://doi.org/10.1021/acschembio.0c00498",
-    "cited_by": 13,
+    "cited_by": 14,
     "source": "openalex"
   },
   {
     "title": "Characterisation and application of recombinant FVIII‐neutralising antibodies from haemophilia A inhibitor patients",
-    "authors": "Carmen H. Coxon, Xinren Yu, James Beavis, L. Diaz Saez, Andrew Riches‐Duit, Christopher Ball, Scott L. Diamond, S. Raut",
+    "authors": "Carmen Coxon, Xinren Yu, James Beavis, L. Diaz Saez, Andrew Riches‐Duit, Christopher Ball, Scott L. Diamond, S. Raut",
     "year": 2021,
     "venue": "British Journal of Haematology",
     "url": "https://doi.org/10.1111/bjh.17227",
@@ -113,10 +113,7 @@
     "title": "Deep analysis of the USP18-dependent ISGylome and proteome unveils important roles for USP18 in tumour cell antigenicity and radiosensitivity",
     "authors": "Adán Pinto-Fernández, Mariolina Salio, Tom Partridge, Jianzhou Chen, George Vere, Helene Greenwood, Cyriel Sebastiaan Olie, Andreas Damianou, Hannah C. Scott, Henry J. Pegg, Alessandra Chiarenza, L. Diaz Saez, Paul Smith, Claudia González-López, Bhavisha A. Patel, Emma Anderton, Neil P. Jones, Tim Hammonds, K. Huber, Ruth J. Muschel, Persephone Borrow, Vincenzo Cerundolo, Benedikt M. Kessler",
     "year": 2020,
-    "venue": {
-      "publisher": "bioRxiv",
-      "yearOfPublication": 2020
-    },
+    "venue": "",
     "url": "https://doi.org/10.1101/2020.03.31.005629",
     "eprint_url": "https://doi.org/10.1101/2020.03.31.005629",
     "cited_by": 4,
@@ -169,7 +166,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 85,
+    "cited_by": 87,
     "source": "openalex"
   },
   {
