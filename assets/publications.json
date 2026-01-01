@@ -11,7 +11,7 @@
   },
   {
     "title": "Transcriptomic and enzymological evidence for plastid peptidoglycan synthesis in the gymnosperm <i>Picea abies</i>",
-    "authors": "Yusuke Sugita, Ichiro Kajisa, E Yilan, Jie Zhao, L. Diaz Saez, Christopher G. Dowson",
+    "authors": "Yusuke Sugita, Mandy Dowson-Day, Ichiro Kajisa, E Yilan, Jie Zhao, Jiaqi Wang, Xiaofei Lin, L. Diaz Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
     "year": 2025,
     "venue": "The Plant Journal",
     "url": "https://doi.org/10.1111/tpj.70588",
@@ -41,13 +41,13 @@
   },
   {
     "title": "Discovery of High-Affinity Small-Molecule Binders of the Epigenetic Reader YEATS4",
-    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James M. Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, C. Gileadi, Charline Giroud, Michael Harris, Brett D. Hollingshead, K. Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, L. Diaz Saez, Ingrid A. Stock, Benjamin A. Thuma, Andy S. Tsai, Alison E. Varghese",
-    "year": 2022,
+    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, Carina Gileadi, Charline Giroud, Michael R. Harris, Brett D. Hollingshead, Kilian Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, Laura Díaz Sáez, Ingrid A. Stock, Benjamin A. Thuma, Andy Tsai, Alison E. Varghese",
+    "year": "2022",
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
-    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
+    "eprint_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.2c01421",
     "cited_by": 19,
-    "source": "openalex"
+    "source": "crossref"
   },
   {
     "title": "Fragment Screening Reveals Starting Points for Rational Design of Galactokinase 1 Inhibitors to Treat Classic Galactosemia",
@@ -91,13 +91,13 @@
   },
   {
     "title": "Demonstration of the utility of DOS-derived fragment libraries for rapid hit derivatisation in a multidirectional fashion",
-    "authors": "Sarah L. Kidd, Elaine Fowler, Till Reinhardt, Thomas Compton, Natalia Mateu, Hector Newman, Dom Bellini, Romain Talon, Joseph McLoughlin, Tobias Krojer, Anthony Aimon, Anthony Bradley, Michael Fairhead, Paul Brear, Laura Díaz-Sáez, Katherine McAuley, Hannah F. Sore, Andrew Madin, Daniel H. O'Donovan, Kilian V. M. Huber, Marko Hyvönen, Frank von Delft, Christopher G. Dowson, David R. Spring",
-    "year": "2020",
+    "authors": "Sarah L. Kidd, Elaine Fowler, Till Reinhardt, Thomas Compton, Natalia Mateu, Hector Newman, Dom Bellini, R. Talon, Joseph McLoughlin, T. Krojer, A. Aimon, A.R. Bradley, M. Fairhead, P. Brear, L. Diaz Saez, Katherine McAuley, Hannah F. Sore, Andrew Madin, Daniel H. O’Donovan, K. Huber, Marko Hyvönen, F. von Delft, Christopher G. Dowson, David R. Spring",
+    "year": 2020,
     "venue": "Chemical Science",
     "url": "https://doi.org/10.1039/d0sc01232g",
-    "eprint_url": "http://pubs.rsc.org/en/content/articlepdf/2020/SC/D0SC01232G",
-    "cited_by": 21,
-    "source": "crossref"
+    "eprint_url": "https://doi.org/10.1039/d0sc01232g",
+    "cited_by": 23,
+    "source": "openalex"
   },
   {
     "title": "Deliberately Losing Control of C−H Activation Processes in the Design of Small‐Molecule‐Fragment Arrays Targeting Peroxisomal Metabolism",
@@ -123,7 +123,10 @@
     "title": "Deep analysis of the USP18-dependent ISGylome and proteome unveils important roles for USP18 in tumour cell antigenicity and radiosensitivity",
     "authors": "Adán Pinto-Fernández, Mariolina Salio, Tom Partridge, Jianzhou Chen, George Vere, Helene Greenwood, Cyriel Sebastiaan Olie, Andreas Damianou, Hannah C. Scott, Henry J. Pegg, Alessandra Chiarenza, L. Diaz Saez, Paul Smith, Claudia González-López, Bhavisha A. Patel, Emma Anderton, Neil P. Jones, Tim Hammonds, K. Huber, Ruth J. Muschel, Persephone Borrow, Vincenzo Cerundolo, Benedikt M. Kessler",
     "year": 2020,
-    "venue": "",
+    "venue": {
+      "publisher": "bioRxiv",
+      "yearOfPublication": 2020
+    },
     "url": "https://doi.org/10.1101/2020.03.31.005629",
     "eprint_url": "https://doi.org/10.1101/2020.03.31.005629",
     "cited_by": 4,
@@ -186,7 +189,7 @@
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
     "eprint_url": "http://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 62,
+    "cited_by": 63,
     "source": "crossref"
   },
   {
