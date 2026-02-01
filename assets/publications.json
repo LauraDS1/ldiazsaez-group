@@ -11,11 +11,21 @@
   },
   {
     "title": "Transcriptomic and enzymological evidence for plastid peptidoglycan synthesis in the gymnosperm <i>Picea abies</i>",
-    "authors": "Yusuke Sugita, Mandy Dowson-Day, Ichiro Kajisa, E Yilan, Jie Zhao, Jiaqi Wang, Xiaofei Lin, L. Diaz Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
+    "authors": "Yusuke Sugita, Mandy Dowson-Day, Ichiro Kajisa, Katsuaki Takechi, E Yilan, Jie Zhao, Jiaqi Wang, Xiaofei Lin, L. Diaz Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
     "year": 2025,
     "venue": "The Plant Journal",
     "url": "https://doi.org/10.1111/tpj.70588",
     "eprint_url": "https://doi.org/10.1111/tpj.70588",
+    "cited_by": 0,
+    "source": "openalex"
+  },
+  {
+    "title": "Phänomik‐basierte Entdeckung neuer orthosterischer Cholinkinase Inhibitoren",
+    "authors": "Ludwig G. Bauer, Jennifer Ward, L. Diaz Saez, Yvonne Sundström, Tuomas Tolvanen, Juan Carlos Alarcón Barrera, Sarantos Kostidis, Catherine Rogers, Ioanna Panagakou, Usha Singh, Elisabeth M. Rothweiler, Alejandro Gonzalez Orta, H. Ümit Kanıskan, Jianping Hu, Jian Jin, Sonja Sievers, Herbert Waldmann, Martin Giera, M. Sundström, Louise Berg, K. Huber",
+    "year": 2024,
+    "venue": "Angewandte Chemie",
+    "url": "https://doi.org/10.1002/ange.202420149",
+    "eprint_url": "https://doi.org/10.1002/ange.202420149",
     "cited_by": 0,
     "source": "openalex"
   },
@@ -41,13 +51,13 @@
   },
   {
     "title": "Discovery of High-Affinity Small-Molecule Binders of the Epigenetic Reader YEATS4",
-    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, Carina Gileadi, Charline Giroud, Michael R. Harris, Brett D. Hollingshead, Kilian Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, Laura Díaz Sáez, Ingrid A. Stock, Benjamin A. Thuma, Andy Tsai, Alison E. Varghese",
-    "year": "2022",
+    "authors": "Allyn T. Londregan, Karlygash Aitmakhanova, James M. Bennett, Laura J. Byrnes, Daniel P. Canterbury, Xiayun Cheng, Thomas Christott, Jennifer Clemens, Steven B. Coffey, João M. Dias, Matthew Dowling, Gillian Farnie, Oleg Fedorov, Kimberly F. Fennell, Vicki Gamble, C. Gileadi, Charline Giroud, Michael Harris, Brett D. Hollingshead, K. Huber, Magdalena Korczynska, Kimberly Lapham, Paula M. Loria, Arjun Narayanan, Dafydd R. Owen, Brigitt Raux, Parag V. Sahasrabudhe, Roger B. Ruggeri, L. Diaz Saez, Ingrid A. Stock, Benjamin A. Thuma, Andy S. Tsai, Alison E. Varghese",
+    "year": 2022,
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
-    "eprint_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.2c01421",
+    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.2c01421",
     "cited_by": 19,
-    "source": "crossref"
+    "source": "openalex"
   },
   {
     "title": "Fragment Screening Reveals Starting Points for Rational Design of Galactokinase 1 Inhibitors to Treat Classic Galactosemia",
@@ -116,7 +126,7 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 54,
+    "cited_by": 55,
     "source": "openalex"
   },
   {
@@ -139,7 +149,7 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 312,
+    "cited_by": 317,
     "source": "openalex"
   },
   {
@@ -150,6 +160,16 @@
     "url": "https://doi.org/10.1111/febs.14976",
     "eprint_url": "https://doi.org/10.1111/febs.14976",
     "cited_by": 8,
+    "source": "openalex"
+  },
+  {
+    "title": "Entdeckung einer chemischen Sonde für MLLT1/3‐YEATS‐Domänen",
+    "authors": "Moses Moustakim, Thomas Christott, Octovia Monteiro, James M. Bennett, Charline Giroud, Jennifer Ward, Catherine Rogers, Paul Smith, Ioanna Panagakou, L. Diaz Saez, Suet Ling Felce, Vicki Gamble, C. Gileadi, Nadia Halidi, David Heidenreich, A. Chaikuad, Stefan Knapp, K. Huber, Gillian Farnie, Jag Heer, Nenad Manevski, Gennady Poda, Rima Al‐awar, Darren J. Dixon, Paul E. Brennan, Oleg Fedorov",
+    "year": 2018,
+    "venue": "Angewandte Chemie",
+    "url": "https://doi.org/10.1002/ange.201810617",
+    "eprint_url": "https://doi.org/10.1002/ange.201810617",
+    "cited_by": 1,
     "source": "openalex"
   },
   {
@@ -184,13 +204,23 @@
   },
   {
     "title": "Benzoisoquinolinediones as Potent and Selective Inhibitors of BRPF2 and TAF1/TAF1L Bromodomains",
-    "authors": "Léa Bouché, Clara D. Christ, Stephan Siegel, Amaury E. Fernández-Montalván, Simon J. Holton, Oleg Fedorov, Antonius ter Laak, Tatsuo Sugawara, Detlef Stöckigt, Cynthia Tallant, James Bennett, Octovia Monteiro, Laura Díaz-Sáez, Paulina Siejka, Julia Meier, Vera Pütter, Jörg Weiske, Susanne Müller, Kilian V. M. Huber, Ingo V. Hartung, Bernard Haendler",
-    "year": "2017",
+    "authors": "Léa Bouché, Clara D. Christ, Stephan Siegel, Amaury E. Fernández‐Montalván, Simon J. Holton, Oleg Fedorov, Antonius ter Laak, Tatsuo Sugawara, Detlef Stöckigt, C. Tallant, James M. Bennett, Octovia Monteiro, L. Diaz Saez, Paulina Siejka, Julia Meier, Vera Pütter, Jörg Weiske, Susanne Müller, K. Huber, Ingo V. Hartung, Bernard Haendler",
+    "year": 2017,
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "eprint_url": "http://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 63,
-    "source": "crossref"
+    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
+    "cited_by": 66,
+    "source": "openalex"
+  },
+  {
+    "title": "Abstract 5084: Potent and isoform-selective ATAD2 bromodomain inhibitor with unprecedented chemical structure and mode of action",
+    "authors": "Amaury E. Fernández‐Montalván, Markus Berger, Benno Kuropka, Seong Joo Koo, Volker Badock, Joerg Weiske, Simon J. Holton, A. Chaikuad, L. Diaz Saez, James M. Bennett, Oleg Federov, K. Huber, Paolo A. Centrella, Matthew Clark, Christoph E. Dumelin, Eric A. Sigel, Holly S. Soutter, Dawn M. Troast, Ying Zhang, John W. Cuozzo, Anthony D. Keefe, Didier Roche, Vincent Rodeschini, Jan Hübner, Hilmar Weinmann, Ingo V. Hartung",
+    "year": 2017,
+    "venue": "Cancer Research",
+    "url": "https://doi.org/10.1158/1538-7445.am2017-5084",
+    "eprint_url": "https://doi.org/10.1158/1538-7445.am2017-5084",
+    "cited_by": 1,
+    "source": "openalex"
   },
   {
     "title": "Open and compressed conformations of <i>Francisella tularensis</i> ClpP",
