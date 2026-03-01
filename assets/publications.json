@@ -41,13 +41,13 @@
   },
   {
     "title": "Discovery of PFI-6, a small-molecule chemical probe for the YEATS domain of MLLT1 and MLLT3",
-    "authors": "Brigitt Raux, Karly A. Buchan, James Bennett, Thomas Christott, Matthew S. Dowling, Gillian Farnie, Oleg Fedorov, Vicki Gamble, Carina Gileadi, Charline Giroud, Kilian V.M. Huber, Magdalena Korczynska, Chris Limberakis, Arjun Narayanan, Dafydd R. Owen, Laura Díaz Sáez, Ingrid A. Stock, Allyn T. Londregan",
-    "year": "2024",
+    "authors": "Brigitt Raux, Karly Buchan, James M. Bennett, Thomas Christott, Matthew Dowling, Gillian Farnie, Oleg Fedorov, Vicki Gamble, C. Gileadi, Charline Giroud, K. Huber, Magdalena Korczynska, Chris Limberakis, Arjun Narayanan, Dafydd R. Owen, L. Diaz Saez, Ingrid A. Stock, Allyn T. Londregan",
+    "year": 2023,
     "venue": "Bioorganic &amp; Medicinal Chemistry Letters",
     "url": "https://doi.org/10.1016/j.bmcl.2023.129546",
-    "eprint_url": "https://api.elsevier.com/content/article/PII:S0960894X23004249?httpAccept=text/xml",
+    "eprint_url": "https://doi.org/10.1016/j.bmcl.2023.129546",
     "cited_by": 7,
-    "source": "crossref"
+    "source": "openalex"
   },
   {
     "title": "Discovery of High-Affinity Small-Molecule Binders of the Epigenetic Reader YEATS4",
@@ -86,7 +86,7 @@
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.0c00144",
     "eprint_url": "https://doi.org/10.1021/acs.jmedchem.0c00144",
-    "cited_by": 39,
+    "cited_by": 40,
     "source": "openalex"
   },
   {
@@ -126,7 +126,7 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 55,
+    "cited_by": 56,
     "source": "openalex"
   },
   {
@@ -149,7 +149,7 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 317,
+    "cited_by": 323,
     "source": "openalex"
   },
   {
@@ -184,13 +184,13 @@
   },
   {
     "title": "Creation of a Novel Class of Potent and Selective MutT Homologue 1 (MTH1) Inhibitors Using Fragment-Based Screening and Structure-Based Drug Design",
-    "authors": "Fredrik Rahm, Jenny Viklund, Lionel Trésaugues, Manuel Ellermann, Anja Giese, Ulrika Ericsson, Rickard Forsblom, Tobias Ginman, Judith Günther, Kenth Hallberg, Johan Lindström, Lars Boukharta Persson, Camilla Silvander, Antoine Talagas, Laura Díaz-Sáez, Oleg Fedorov, Kilian V. M. Huber, Ioanna Panagakou, Paulina Siejka, Mátyás Gorjánácz, Marcus Bauser, Martin Andersson",
-    "year": "2018",
+    "authors": "Fredrik Rahm, Jenny Viklund, L. Tresaugues, Manuel Ellermann, Anja Giese, U.B. Ericsson, Rickard Forsblom, Tobias Ginman, Judith Günther, Kenth Hallberg, Johan Lindström, Lars Boukharta Persson, Camilla Silvander, Antoine Talagas, L. Diaz Saez, Oleg Fedorov, K. Huber, Ioanna Panagakou, Paulina Siejka, Mátyás Gorjánácz, Marcus Bauser, Martin Andersson",
+    "year": 2018,
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b01884",
-    "eprint_url": "https://pubs.acs.org/doi/pdf/10.1021/acs.jmedchem.7b01884",
-    "cited_by": 31,
-    "source": "crossref"
+    "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b01884",
+    "cited_by": 33,
+    "source": "openalex"
   },
   {
     "title": "Isoform-Selective ATAD2 Chemical Probe with Novel Chemical Structure and Unusual Mode of Action",
@@ -199,7 +199,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 87,
+    "cited_by": 88,
     "source": "openalex"
   },
   {
