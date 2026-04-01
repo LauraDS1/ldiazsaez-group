@@ -11,7 +11,7 @@
   },
   {
     "title": "Transcriptomic and enzymological evidence for plastid peptidoglycan synthesis in the gymnosperm <i>Picea abies</i>",
-    "authors": "Yusuke Sugita, Mandy Dowson-Day, Ichiro Kajisa, Katsuaki Takechi, E Yilan, Jie Zhao, Jiaqi Wang, Xiaofei Lin, L. Diaz Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
+    "authors": "Yusuke Sugita, Mandy Dowson-Day, Ichiro Kajisa, Katsuaki Takechi, E Yilan, Jie Zhao, Jiaqi Wang, Xiaofei Lin, Laura Diaz‐Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
     "year": 2025,
     "venue": "The Plant Journal",
     "url": "https://doi.org/10.1111/tpj.70588",
@@ -21,7 +21,7 @@
   },
   {
     "title": "Phänomik‐basierte Entdeckung neuer orthosterischer Cholinkinase Inhibitoren",
-    "authors": "Ludwig G. Bauer, Jennifer Ward, L. Diaz Saez, Yvonne Sundström, Tuomas Tolvanen, Juan Carlos Alarcón Barrera, Sarantos Kostidis, Catherine Rogers, Ioanna Panagakou, Usha Singh, Elisabeth M. Rothweiler, Alejandro Gonzalez Orta, H. Ümit Kanıskan, Jianping Hu, Jian Jin, Sonja Sievers, Herbert Waldmann, Martin Giera, M. Sundström, Louise Berg, K. Huber",
+    "authors": "Ludwig G. Bauer, Jennifer Ward, Laura Díaz‐Sáez, Yvonne Sundström, Tuomas Tolvanen, Juan Carlos Alarcón Barrera, Sarantos Kostidis, Catherine Rogers, Ioanna Panagakou, Usha Singh, Elisabeth M. Rothweiler, Alejandro Gonzalez Orta, H. Ümit Kanıskan, Jianping Hu, Jian Jin, Sonja Sievers, Herbert Waldmann, Martin Giera, M. Sundström, Louise Berg, K. Huber",
     "year": 2024,
     "venue": "Angewandte Chemie",
     "url": "https://doi.org/10.1002/ange.202420149",
@@ -31,7 +31,7 @@
   },
   {
     "title": "Phenomics‐Based Discovery of Novel Orthosteric Choline Kinase Inhibitors",
-    "authors": "Ludwig G. Bauer, Jennifer Ward, L. Diaz Saez, Yvonne Sundström, Tuomas Tolvanen, Juan Carlos Alarcón Barrera, Sarantos Kostidis, Catherine Rogers, Ioanna Panagakou, Usha Singh, Elisabeth M. Rothweiler, Alejandro Gonzalez Orta, H. Ümit Kanıskan, Jianping Hu, Jian Jin, Sonja Sievers, Herbert Waldmann, Martin Giera, Michael Sundström, Louise Berg, K. Huber",
+    "authors": "Ludwig G. Bauer, Jennifer Ward, Laura Díaz‐Sáez, Yvonne Sundström, Tuomas Tolvanen, Juan Carlos Alarcón Barrera, Sarantos Kostidis, Catherine Rogers, Ioanna Panagakou, Usha Singh, Elisabeth M. Rothweiler, Alejandro Gonzalez Orta, H. Ümit Kanıskan, Jianping Hu, Jian Jin, Sonja Sievers, Herbert Waldmann, Martin Giera, Michael Sundström, Louise Berg, K. Huber",
     "year": 2024,
     "venue": "Angewandte Chemie International Edition",
     "url": "https://doi.org/10.1002/anie.202420149",
@@ -71,7 +71,7 @@
   },
   {
     "title": "Characterisation and application of recombinant FVIII‐neutralising antibodies from haemophilia A inhibitor patients",
-    "authors": "Carmen Coxon, Xinren Yu, James Beavis, L. Diaz Saez, Andrew Riches‐Duit, Christopher Ball, Scott L. Diamond, S. Raut",
+    "authors": "Carmen Coxon, Xinren Yu, James Beavis, Laura Diaz‐Saez, Andrew Riches‐Duit, Christopher Ball, Scott L. Diamond, S. Raut",
     "year": 2021,
     "venue": "British Journal of Haematology",
     "url": "https://doi.org/10.1111/bjh.17227",
@@ -96,7 +96,7 @@
     "venue": "International Immunopharmacology",
     "url": "https://doi.org/10.1016/j.intimp.2020.107026",
     "eprint_url": "https://doi.org/10.1016/j.intimp.2020.107026",
-    "cited_by": 8,
+    "cited_by": 10,
     "source": "openalex"
   },
   {
@@ -126,7 +126,7 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 56,
+    "cited_by": 57,
     "source": "openalex"
   },
   {
@@ -149,12 +149,12 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 323,
+    "cited_by": 326,
     "source": "openalex"
   },
   {
     "title": "<i>Burkholderia pseudomallei </i><scp>d</scp>‐alanine‐<scp>d</scp>‐alanine ligase; detailed characterisation and assessment of a potential antibiotic drug target",
-    "authors": "L. Diaz Saez, Leah S. Torrie, Stuart P. McElroy, David W. Gray, William N. Hunter",
+    "authors": "Laura Díaz‐Sáez, Leah S. Torrie, Stuart P. McElroy, David W. Gray, William N. Hunter",
     "year": 2019,
     "venue": "The FEBS Journal",
     "url": "https://doi.org/10.1111/febs.14976",
@@ -164,7 +164,7 @@
   },
   {
     "title": "Entdeckung einer chemischen Sonde für MLLT1/3‐YEATS‐Domänen",
-    "authors": "Moses Moustakim, Thomas Christott, Octovia Monteiro, James M. Bennett, Charline Giroud, Jennifer Ward, Catherine Rogers, Paul Smith, Ioanna Panagakou, L. Diaz Saez, Suet Ling Felce, Vicki Gamble, C. Gileadi, Nadia Halidi, David Heidenreich, A. Chaikuad, Stefan Knapp, K. Huber, Gillian Farnie, Jag Heer, Nenad Manevski, Gennady Poda, Rima Al‐awar, Darren J. Dixon, Paul E. Brennan, Oleg Fedorov",
+    "authors": "Moses Moustakim, Thomas Christott, Octovia Monteiro, James M. Bennett, Charline Giroud, Jennifer Ward, Catherine Rogers, Paul Smith, Ioanna Panagakou, Laura Díaz‐Sáez, Suet Ling Felce, Vicki Gamble, C. Gileadi, Nadia Halidi, David Heidenreich, A. Chaikuad, Stefan Knapp, K. Huber, Gillian Farnie, Jag Heer, Nenad Manevski, Gennady Poda, Rima Al‐awar, Darren J. Dixon, Paul E. Brennan, Oleg Fedorov",
     "year": 2018,
     "venue": "Angewandte Chemie",
     "url": "https://doi.org/10.1002/ange.201810617",
@@ -174,7 +174,7 @@
   },
   {
     "title": "Discovery of an MLLT1/3 YEATS Domain Chemical Probe",
-    "authors": "Moses Moustakim, Thomas Christott, Octovia Monteiro, James M. Bennett, Charline Giroud, Jennifer Ward, Catherine Rogers, Paul Smith, Ioanna Panagakou, L. Diaz Saez, Suet Ling Felce, Vicki Gamble, C. Gileadi, Nadia Halidi, David Heidenreich, A. Chaikuad, Stefan Knapp, K. Huber, Gillian Farnie, Jag Heer, Nenad Manevski, Gennady Poda, Rima Al‐awar, Darren J. Dixon, Paul E. Brennan, Oleg Fedorov",
+    "authors": "Moses Moustakim, Thomas Christott, Octovia Monteiro, James M. Bennett, Charline Giroud, Jennifer Ward, Catherine Rogers, Paul Smith, Ioanna Panagakou, Laura Díaz‐Sáez, Suet Ling Felce, Vicki Gamble, C. Gileadi, Nadia Halidi, David Heidenreich, A. Chaikuad, Stefan Knapp, K. Huber, Gillian Farnie, Jag Heer, Nenad Manevski, Gennady Poda, Rima Al‐awar, Darren J. Dixon, Paul E. Brennan, Oleg Fedorov",
     "year": 2018,
     "venue": "Angewandte Chemie International Edition",
     "url": "https://doi.org/10.1002/anie.201810617",
@@ -199,7 +199,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 88,
+    "cited_by": 90,
     "source": "openalex"
   },
   {
@@ -209,12 +209,12 @@
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
     "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 66,
+    "cited_by": 67,
     "source": "openalex"
   },
   {
     "title": "Abstract 5084: Potent and isoform-selective ATAD2 bromodomain inhibitor with unprecedented chemical structure and mode of action",
-    "authors": "Amaury E. Fernández‐Montalván, Markus Berger, Benno Kuropka, Seong Joo Koo, Volker Badock, Joerg Weiske, Simon J. Holton, A. Chaikuad, L. Diaz Saez, James M. Bennett, Oleg Federov, K. Huber, Paolo A. Centrella, Matthew Clark, Christoph E. Dumelin, Eric A. Sigel, Holly S. Soutter, Dawn M. Troast, Ying Zhang, John W. Cuozzo, Anthony D. Keefe, Didier Roche, Vincent Rodeschini, Jan Hübner, Hilmar Weinmann, Ingo V. Hartung",
+    "authors": "Amaury E. Fernández‐Montalván, Markus Berger, Benno Kuropka, Seong Joo Koo, Volker Badock, Joerg Weiske, Simon J. Holton, A. Chaikuad, L. Diaz Saez, James M. Bennett, Oleg Federov, K. Huber, Matthew Clark, Christoph E. Dumelin, Eric A. Sigel, Holly S. Soutter, Dawn M. Troast, Ying Zhang, John W. Cuozzo, Anthony D. Keefe, Didier Roche, Vincent Rodeschini, Jan Hübner, Hilmar Weinmann, Ingo V. Hartung, Mátyás Gorjánácz",
     "year": 2017,
     "venue": "Cancer Research",
     "url": "https://doi.org/10.1158/1538-7445.am2017-5084",
@@ -224,7 +224,7 @@
   },
   {
     "title": "Open and compressed conformations of <i>Francisella tularensis</i> ClpP",
-    "authors": "L. Diaz Saez, Genady Pankov, William N. Hunter",
+    "authors": "Laura Díaz‐Sáez, Genady Pankov, William N. Hunter",
     "year": 2016,
     "venue": "Proteins: Structure, Function, and Bioinformatics",
     "url": "https://doi.org/10.1002/prot.25197",
