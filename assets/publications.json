@@ -6,17 +6,17 @@
     "venue": "Frontiers in Plant Science",
     "url": "https://doi.org/10.3389/fpls.2025.1598744",
     "eprint_url": "https://doi.org/10.3389/fpls.2025.1598744",
-    "cited_by": 0,
+    "cited_by": 1,
     "source": "openalex"
   },
   {
     "title": "Transcriptomic and enzymological evidence for plastid peptidoglycan synthesis in the gymnosperm <i>Picea abies</i>",
-    "authors": "Yusuke Sugita, Mandy Dowson-Day, Ichiro Kajisa, Katsuaki Takechi, E Yilan, Jie Zhao, Jiaqi Wang, Xiaofei Lin, Laura Diaz‐Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
+    "authors": "Yayoi Sugita, Mandy Dowson-Day, Ichiro Kajisa, Katsuaki Takechi, E Yilan, Jingzhi Zhao, Jiaqi Wang, Xiaofei Lin, Laura Diaz‐Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
     "year": 2025,
     "venue": "The Plant Journal",
     "url": "https://doi.org/10.1111/tpj.70588",
     "eprint_url": "https://doi.org/10.1111/tpj.70588",
-    "cited_by": 0,
+    "cited_by": 1,
     "source": "openalex"
   },
   {
@@ -46,7 +46,7 @@
     "venue": "Bioorganic &amp; Medicinal Chemistry Letters",
     "url": "https://doi.org/10.1016/j.bmcl.2023.129546",
     "eprint_url": "https://doi.org/10.1016/j.bmcl.2023.129546",
-    "cited_by": 7,
+    "cited_by": 8,
     "source": "openalex"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "title": "Characterisation and application of recombinant FVIII‐neutralising antibodies from haemophilia A inhibitor patients",
-    "authors": "Carmen Coxon, Xinren Yu, James Beavis, Laura Diaz‐Saez, Andrew Riches‐Duit, Christopher Ball, Scott L. Diamond, S. Raut",
+    "authors": "Carmen Coxon, Xinren Yu, James Beavis, Laura Diaz‐Saez, Andrew Riches‐Duit, Christopher Ball, Scott L. Diamond, Sanj Raut",
     "year": 2021,
     "venue": "British Journal of Haematology",
     "url": "https://doi.org/10.1111/bjh.17227",
@@ -126,7 +126,7 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 57,
+    "cited_by": 58,
     "source": "openalex"
   },
   {
@@ -144,12 +144,12 @@
   },
   {
     "title": "Rapid Covalent-Probe Discovery by Electrophile-Fragment Screening",
-    "authors": "Efrat Resnick, A.R. Bradley, Jinrui Gan, A. Douangamath, T. Krojer, Ritika Sethi, Paul P. Geurink, A. Aimon, Gabriel Amitai, Dom Bellini, James M. Bennett, M. Fairhead, Oleg Fedorov, Ronen Gabizon, Gan Jin, Jingxu Guo, A.N. Plotnikov, Nava Reznik, G.F. Ruda, L. Diaz Saez, Verena M. Straub, Tamás Szommer, Srikannathasan Velupillai, Daniel Zaidman, Yanling Zhang, Alun R. Coker, Christopher G. Dowson, Haim Barr, Chu Wang, K. Huber, Paul E. Brennan, Huib Ovaa, F. von Delft, Nir London",
+    "authors": "Efrat Resnick, A.R. Bradley, Jinrui Gan, A. Douangamath, T. Krojer, Ritika Sethi, Paul P. Geurink, A. Aimon, Gabriel Amitai, Dom Bellini, James M. Bennett, M. Fairhead, Oleg Fedorov, Ronen Gabizon, Jin Gan, Jingxu Guo, A.N. Plotnikov, Nava Reznik, G.F. Ruda, L. Diaz Saez, Verena M. Straub, Tamás Szommer, Srikannathasan Velupillai, Daniel Zaidman, Yanling Zhang, Alun R. Coker, Christopher G. Dowson, Haim Barr, Chu Wang, K. Huber, Paul E. Brennan, Huib Ovaa, F. von Delft, Nir London",
     "year": 2019,
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 326,
+    "cited_by": 336,
     "source": "openalex"
   },
   {
@@ -179,7 +179,7 @@
     "venue": "Angewandte Chemie International Edition",
     "url": "https://doi.org/10.1002/anie.201810617",
     "eprint_url": "https://doi.org/10.1002/anie.201810617",
-    "cited_by": 91,
+    "cited_by": 92,
     "source": "openalex"
   },
   {
@@ -199,7 +199,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 90,
+    "cited_by": 91,
     "source": "openalex"
   },
   {
@@ -209,7 +209,7 @@
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
     "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 67,
+    "cited_by": 68,
     "source": "openalex"
   },
   {
@@ -239,7 +239,7 @@
     "venue": "Biochemical Journal",
     "url": "https://doi.org/10.1042/bj20140511",
     "eprint_url": "https://doi.org/10.1042/bj20140511",
-    "cited_by": 11,
+    "cited_by": 12,
     "source": "openalex"
   }
 ]
