@@ -1,5 +1,18 @@
 [
   {
+    "title": "Discovery, characterisation and optimisation of bicyclic peptide inhibitors that disarm <i>Staphylococcus aureus</i> α-hemolysin",
+    "authors": "Jonathan R Whiteside, Nick Lewis, L. Diaz Saez, Hector Newman, Sarah Newell, Tazmin T. Martin, Jack Butler, Michael J. Skynner, Michael J. Dawson, Paul Beswick, Christopher G. Dowson, Catherine E Rowland",
+    "year": 2026,
+    "venue": {
+      "publisher": "bioRxiv",
+      "yearOfPublication": 2026
+    },
+    "url": "https://doi.org/10.64898/2026.03.09.710508",
+    "eprint_url": "https://doi.org/10.64898/2026.03.09.710508",
+    "cited_by": 0,
+    "source": "openalex"
+  },
+  {
     "title": "Two zinc ABC transporters contribute to Rhizobium leguminosarum symbiosis with Pisum sativum and Lens culinaris",
     "authors": "Joanna Soldek, Marta Ballesteros-Gutiérrez, L. Diaz Saez, Ignacio Delgado-Santamaría, J.M. Palacios, Marta Albareda",
     "year": 2025,
@@ -46,7 +59,7 @@
     "venue": "Bioorganic &amp; Medicinal Chemistry Letters",
     "url": "https://doi.org/10.1016/j.bmcl.2023.129546",
     "eprint_url": "https://doi.org/10.1016/j.bmcl.2023.129546",
-    "cited_by": 8,
+    "cited_by": 9,
     "source": "openalex"
   },
   {
@@ -66,7 +79,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.0c00498",
     "eprint_url": "https://doi.org/10.1021/acschembio.0c00498",
-    "cited_by": 14,
+    "cited_by": 15,
     "source": "openalex"
   },
   {
@@ -116,7 +129,7 @@
     "venue": "ChemMedChem",
     "url": "https://doi.org/10.1002/cmdc.202000543",
     "eprint_url": "https://doi.org/10.1002/cmdc.202000543",
-    "cited_by": 6,
+    "cited_by": 7,
     "source": "openalex"
   },
   {
@@ -149,7 +162,7 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 336,
+    "cited_by": 340,
     "source": "openalex"
   },
   {
@@ -179,7 +192,7 @@
     "venue": "Angewandte Chemie International Edition",
     "url": "https://doi.org/10.1002/anie.201810617",
     "eprint_url": "https://doi.org/10.1002/anie.201810617",
-    "cited_by": 92,
+    "cited_by": 94,
     "source": "openalex"
   },
   {
