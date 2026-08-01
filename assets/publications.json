@@ -3,7 +3,10 @@
     "title": "Discovery, characterisation and optimisation of bicyclic peptide inhibitors that disarm <i>Staphylococcus aureus</i> α-hemolysin",
     "authors": "Jonathan R Whiteside, Nick Lewis, L. Diaz Saez, Hector Newman, Sarah Newell, Tazmin T. Martin, Jack Butler, Michael J. Skynner, Michael J. Dawson, Paul Beswick, Christopher G. Dowson, Catherine E Rowland",
     "year": 2026,
-    "venue": "",
+    "venue": {
+      "publisher": "bioRxiv",
+      "yearOfPublication": 2026
+    },
     "url": "https://doi.org/10.64898/2026.03.09.710508",
     "eprint_url": "https://doi.org/10.64898/2026.03.09.710508",
     "cited_by": 0,
@@ -136,14 +139,17 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 59,
+    "cited_by": 61,
     "source": "openalex"
   },
   {
     "title": "Deep analysis of the USP18-dependent ISGylome and proteome unveils important roles for USP18 in tumour cell antigenicity and radiosensitivity",
     "authors": "Adán Pinto-Fernández, Mariolina Salio, Tom Partridge, Jianzhou Chen, George Vere, Helene Greenwood, Cyriel Sebastiaan Olie, Andreas Damianou, Hannah C. Scott, Henry J. Pegg, Alessandra Chiarenza, L. Diaz Saez, Paul Smith, Claudia González-López, Bhavisha A. Patel, Emma Anderton, Neil P. Jones, Tim Hammonds, K. Huber, Ruth J. Muschel, Persephone Borrow, Vincenzo Cerundolo, Benedikt M. Kessler",
     "year": 2020,
-    "venue": "",
+    "venue": {
+      "publisher": "bioRxiv",
+      "yearOfPublication": 2020
+    },
     "url": "https://doi.org/10.1101/2020.03.31.005629",
     "eprint_url": "https://doi.org/10.1101/2020.03.31.005629",
     "cited_by": 4,
@@ -156,7 +162,7 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 342,
+    "cited_by": 345,
     "source": "openalex"
   },
   {
@@ -206,7 +212,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 91,
+    "cited_by": 90,
     "source": "openalex"
   },
   {
