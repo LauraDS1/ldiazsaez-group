@@ -1,6 +1,6 @@
 [
   {
-    "title": "Discovery, characterisation and optimisation of bicyclic peptide inhibitors that disarm <i>Staphylococcus aureus</i> α-hemolysin",
+    "title": "Discovery, characterisation and optimisation of bicyclic peptide inhibitors that disarm Staphylococcus aureus α-hemolysin",
     "authors": "Jonathan R Whiteside, Nick Lewis, L. Diaz Saez, Hector Newman, Sarah Newell, Tazmin T. Martin, Jack Butler, Michael J. Skynner, Michael J. Dawson, Paul Beswick, Christopher G. Dowson, Catherine E Rowland",
     "year": 2026,
     "venue": {
@@ -23,7 +23,7 @@
     "source": "openalex"
   },
   {
-    "title": "Transcriptomic and enzymological evidence for plastid peptidoglycan synthesis in the gymnosperm <i>Picea abies</i>",
+    "title": "Transcriptomic and enzymological evidence for plastid peptidoglycan synthesis in the gymnosperm Picea abies",
     "authors": "Yayoi Sugita, Mandy Dowson-Day, Ichiro Kajisa, Katsuaki Takechi, E Yilan, Jingzhi Zhao, Jiaqi Wang, Xiaofei Lin, Laura Diaz‐Saez, Adrian J. Lloyd, Christopher G. Dowson, Hiroyoshi Takano",
     "year": 2025,
     "venue": "The Plant Journal",
@@ -93,7 +93,7 @@
     "source": "openalex"
   },
   {
-    "title": "Re-Evaluating the Mechanism of Action of α,β-Unsaturated Carbonyl DUB Inhibitors b-AP15 and VLX1570: A Paradigmatic Example of Unspecific Protein Cross-linking with Michael Acceptor Motif-Containing Drugs",
+    "title": "Re-Evaluating the Mechanism of Action of ?,?-Unsaturated Carbonyl DUB Inhibitors b-AP15 and VLX1570: A Paradigmatic Example of Unspecific Protein Cross-linking with Michael Acceptor Motif-Containing Drugs",
     "authors": "Jennifer Ward, Adán Pinto-Fernández, Loïc Cornelissen, Sarah Bonham, L. Diaz Saez, Olivier Riant, K. Huber, Benedikt M. Kessler, Olivier Féron, Edward W. Tate",
     "year": 2020,
     "venue": "Journal of Medicinal Chemistry",
@@ -139,7 +139,7 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 61,
+    "cited_by": 62,
     "source": "openalex"
   },
   {
@@ -162,17 +162,17 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 345,
+    "cited_by": 347,
     "source": "openalex"
   },
   {
-    "title": "<i>Burkholderia pseudomallei </i><scp>d</scp>‐alanine‐<scp>d</scp>‐alanine ligase; detailed characterisation and assessment of a potential antibiotic drug target",
+    "title": "Burkholderia pseudomallei d ‐alanine‐ d ‐alanine ligase; detailed characterisation and assessment of a potential antibiotic drug target",
     "authors": "Laura Díaz‐Sáez, Leah S. Torrie, Stuart P. McElroy, David W. Gray, William N. Hunter",
     "year": 2019,
     "venue": "The FEBS Journal",
     "url": "https://doi.org/10.1111/febs.14976",
     "eprint_url": "https://doi.org/10.1111/febs.14976",
-    "cited_by": 8,
+    "cited_by": 9,
     "source": "openalex"
   },
   {
@@ -222,7 +222,7 @@
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
     "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 68,
+    "cited_by": 69,
     "source": "openalex"
   },
   {
@@ -236,7 +236,7 @@
     "source": "openalex"
   },
   {
-    "title": "Open and compressed conformations of <i>Francisella tularensis</i> ClpP",
+    "title": "Open and compressed conformations of Francisella tularensis ClpP",
     "authors": "Laura Díaz‐Sáez, Genady Pankov, William N. Hunter",
     "year": 2016,
     "venue": "Proteins: Structure, Function, and Bioinformatics",
