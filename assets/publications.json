@@ -3,10 +3,7 @@
     "title": "Discovery, characterisation and optimisation of bicyclic peptide inhibitors that disarm Staphylococcus aureus α-hemolysin",
     "authors": "Jonathan Whiteside, Nick Lewis, L. Diaz Saez, Hector Newman, Sarah Newell, Tazmin T. Martin, Jack Butler, Michael J. Skynner, Michael J. Dawson, Paul Beswick, Christopher Gerard Dowson, Catherine E Rowland",
     "year": 2026,
-    "venue": {
-      "publisher": "bioRxiv",
-      "yearOfPublication": 2026
-    },
+    "venue": "",
     "url": "https://doi.org/10.64898/2026.03.09.710508",
     "eprint_url": "https://doi.org/10.64898/2026.03.09.710508",
     "cited_by": 0,
@@ -14,7 +11,7 @@
   },
   {
     "title": "Two zinc ABC transporters contribute to Rhizobium leguminosarum symbiosis with Pisum sativum and Lens culinaris",
-    "authors": "Joanna Soldek, Marta Ballesteros-Gutiérrez, L. Diaz Saez, Ignacio Delgado-Santamaría, José Manuel Palacios, Marta Albareda",
+    "authors": "Joanna Soldek, Marta Ballesteros Gutiérrez, L. Diaz Saez, Ignacio Delgado-Santamaría, José Manuel Palacios, Marta Albareda",
     "year": 2025,
     "venue": "Frontiers in Plant Science",
     "url": "https://doi.org/10.3389/fpls.2025.1598744",
@@ -59,7 +56,7 @@
     "venue": "Bioorganic &amp; Medicinal Chemistry Letters",
     "url": "https://doi.org/10.1016/j.bmcl.2023.129546",
     "eprint_url": "https://doi.org/10.1016/j.bmcl.2023.129546",
-    "cited_by": 12,
+    "cited_by": 13,
     "source": "openalex"
   },
   {
@@ -119,12 +116,12 @@
     "venue": "Chemical Science",
     "url": "https://doi.org/10.1039/d0sc01232g",
     "eprint_url": "https://doi.org/10.1039/d0sc01232g",
-    "cited_by": 23,
+    "cited_by": 22,
     "source": "openalex"
   },
   {
     "title": "Deliberately Losing Control of C−H Activation Processes in the Design of Small‐Molecule‐Fragment Arrays Targeting Peroxisomal Metabolism",
-    "authors": "Raysa Khan Tareque, Storm Hassell‐Hart, Tobias J. Krojer, Anthony R Bradley, Srikannathasan Velupillai, Romain Talon, M. Fairhead, Iain J. Day, Kamlesh Bala, Robert L. Felix, Paul D. Kemmitt, Paul E. Brennan, F. von Delft, L. Diaz Saez, K. Huber, John A. Spencer",
+    "authors": "Raysa Khan Tareque, Storm Hassell‐Hart, Tobias J. Krojer, Anthony R Bradley, Srikannathasan Velupillai, Romain Talon, M. Fairhead, Iain J. Day, Kamlesh Bala, Robert L. Felix, Paul D. Kemmitt, Paul E. Brennan, F. von Delft, L. Diaz Saez, K. Huber, John Spencer",
     "year": 2020,
     "venue": "ChemMedChem",
     "url": "https://doi.org/10.1002/cmdc.202000543",
@@ -139,17 +136,14 @@
     "venue": "British Journal of Cancer",
     "url": "https://doi.org/10.1038/s41416-020-01167-y",
     "eprint_url": "https://doi.org/10.1038/s41416-020-01167-y",
-    "cited_by": 63,
+    "cited_by": 60,
     "source": "openalex"
   },
   {
     "title": "Deep analysis of the USP18-dependent ISGylome and proteome unveils important roles for USP18 in tumour cell antigenicity and radiosensitivity",
     "authors": "Adán Pinto-Fernández, Mariolina Salio, Tom Partridge, Jianzhou Chen, George Vere, Helene Greenwood, Cyriel Sebastiaan Olie, Andreas Damianou, Hannah Claire Scott, Henry Jack Pegg, Alessandra Chiarenza, L. Diaz Saez, Paul Smith, Claudia González-López, Bhavisha Patel, Emma Anderton, Neil P. Jones, Tim R. Hammonds, K. Huber, Ruth J. Muschel, Persephone Borrow, Vincenzo Cerundolo, Benedikt Mathias Kessler",
     "year": 2020,
-    "venue": {
-      "publisher": "bioRxiv",
-      "yearOfPublication": 2020
-    },
+    "venue": "",
     "url": "https://doi.org/10.1101/2020.03.31.005629",
     "eprint_url": "https://doi.org/10.1101/2020.03.31.005629",
     "cited_by": 4,
@@ -162,7 +156,7 @@
     "venue": "Journal of the American Chemical Society",
     "url": "https://doi.org/10.1021/jacs.9b02822",
     "eprint_url": "https://doi.org/10.1021/jacs.9b02822",
-    "cited_by": 350,
+    "cited_by": 335,
     "source": "openalex"
   },
   {
@@ -212,7 +206,7 @@
     "venue": "ACS Chemical Biology",
     "url": "https://doi.org/10.1021/acschembio.7b00708",
     "eprint_url": "https://doi.org/10.1021/acschembio.7b00708",
-    "cited_by": 91,
+    "cited_by": 92,
     "source": "openalex"
   },
   {
@@ -222,7 +216,7 @@
     "venue": "Journal of Medicinal Chemistry",
     "url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
     "eprint_url": "https://doi.org/10.1021/acs.jmedchem.7b00306",
-    "cited_by": 70,
+    "cited_by": 71,
     "source": "openalex"
   },
   {
@@ -242,7 +236,7 @@
     "venue": "Proteins: Structure, Function, and Bioinformatics",
     "url": "https://doi.org/10.1002/prot.25197",
     "eprint_url": "https://doi.org/10.1002/prot.25197",
-    "cited_by": 13,
+    "cited_by": 12,
     "source": "openalex"
   },
   {
